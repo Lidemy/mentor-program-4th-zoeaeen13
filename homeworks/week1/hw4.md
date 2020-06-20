@@ -1,29 +1,29 @@
 ## 跟你朋友介紹 Git
 
 
-> 菜哥：嗨～我聽說你前幾天教 h0w 使用 Command Line 呢，感覺挺實用的，最近我遇到一個問題，想要好好管理我的笑話靈感，不過太多次修改，有時候還忘記哪一個笑點才是亮點，聽說你們工程師都會用一種程式叫做 Git 來做版本控制，那是什麼呀？可以教我怎麼用嗎？
+> 菜哥：嗨～我聽說你前幾天教 h0w 使用 Command Line 呢，感覺挺實用的，最近我遇到一個問題，想要好好管理我的笑話靈感，因為我常常修改，太多次有時候還忘記哪一個笑點才是亮點，聽說你們工程師都會用一種程式叫做 Git 來做版本控制，那是什麼呀？可以教我怎麼用嗎？
 
 大部份會使用 Git 工具的人，多半會回答你「Git 是一種版本控制系統」，不過我知道你應該無法理解，那我們就用你的笑話集來簡單比喻一下吧！
 
 ### 理解版本控制的概念
 
-假設你 4/20 要上台表演笑話，你從 15 號開始準備，寫了第一個版本、第二個版本，然後期間內不停修改，一直到上台前還準備好了 final 最終版本，大家都很喜歡你的表演。不過你覺得有點美中不足，演出完隔天還添加一些新笑點及檢討內容。
+假設你 4/20 要上台表演笑話，你從 15 號開始準備，寫了第一個版本、第二個版本，然後期間內不停修改，一直到上台前還準備好了 final 最終版本，大家都很喜歡你的表演。不過你覺得有點美中不足，演出完隔天還添加一些新笑點及檢討內容，你的檔案管理就會如下圖一樣。
 ![](https://i.imgur.com/pLgV7qq.png)
 
 到某個聚會前，你又被 cue 去表演上次的笑話，而陪你練習笑話的朋友，覺得某個笑點可以回到之前的版本，笑果應該更好，這時候你要回去看紀錄時突然愣住了，完全找不到哪一個版本修改了什麼。
 
-於是你學乖了，把檔案名稱加上修改訊息，這樣比較好懂一點吧？
+於是你學乖了，這次把檔案名稱加上修改訊息，這樣比較好懂一點吧？
 ![](https://i.imgur.com/7XjpxzX.png)
 
 但是你點開檔案後又遇到了困難，笑話腳本這種東西，通常就是改一兩句話，或是一些冗言贅字修掉，你不會每次修改就註解自己改掉了什麼，也不會留下上個版本的東西，時間一久你就忘了是哪裡寫不好、版本間差異有哪些，難不成要像補習老師批改作業一樣，一堆紅字刪除和插入評語？那打開文件多難看懂呀！
 
 ![](https://i.imgur.com/o8Fb6LT.jpg)
 
-其實你的困擾，就很適合用 Git 來管理，版本控制並非只有工程師才用的到，設計師要管理設計稿的版本、人資要管理每一屆應徵者的資料，只要以「檔案」為單位都適合，總不能永遠都在複製、貼上然後找不到資料吧？
+你的困擾，其實就很適合用 Git 來管理，版本控制並非只有工程師才用的到，設計師要管理設計稿的版本、人資要管理每一屆應徵者的資料，只要以「檔案」為單位都適合，總不能永遠都在複製、貼上然後找不到資料吧？
 
 ---
 
-### 版本控制的用途
+### 認識版本控制的用途
 
 講這麼多，來認識一下 Git 到底是什麼神奇的程式吧？
 * 幫你記住版本的順序
@@ -42,17 +42,17 @@
 你沒有開職缺，誰知道你在應徵助理？
 當然得先跟 Git 說你要做版本控制，它才會來幫你呀！
 ```
-# 開啟版控
+# 開始版本控制
 $ git init
 Initialized empty Git repository in C:/Users/...
 ```
-建立一個專門準備 0420 笑話的空資料夾，使用 [`git init`](https://git-scm.com/docs/git-init) 指令開始版控，會看到裡面有一個隱藏資料夾，它就是會幫你記錄一切的小助理
+先建立一個專門準備 0420 笑話的空資料夾，使用 [`git init`](https://git-scm.com/docs/git-init) 指令開始版控，會看到裡面有一個隱藏資料夾，它就是會幫你記錄一切的小助理
 
-`.git` 這個資料夾，包含 Git 所有必需的倉儲檔案，也就是 Git 倉庫的架構。
+`.git` 這個資料夾，包含 Git 所有必需的倉儲檔案，它就是 Git 倉庫的架構。
 
 ![](https://i.imgur.com/sYNd0Kl.png)
 
-記住到目前這步驟為止倉庫都是預設，**還沒有追蹤任何檔案**，可以用 `git status` 指令隨時確認目前狀態，它會告訴你目前處在哪一個分支、檔案 Commit 狀況等等
+記住到目前這步驟為止倉庫都是預設，**還沒有追蹤任何檔案喔**，你可以用 `git status` 指令隨時確認目前狀態，它會告訴你目前處在哪一個分支、檔案備份狀況等等
 ```
 #確認版控狀態
 $ git status
@@ -78,10 +78,11 @@ $ git add 檔名
 ```
 $ git commit -m"commit message"
 ```
+
 它會將**所有暫存區的東西都放入儲存庫**，形成一個新的版本。
 做這個指令時，要注意後面必須加一個 `-m` 參數用來寫「版本訊息」，通常是用來提醒自己這個版本做了什麼、改哪些東西或新增檔案。
 
-如果不小心忘記加 `-m` 參數，就會跳到一個神奇的介面，這時候莫慌莫怕，鍵盤上按一個 `i` 就可以移動游標和輸入文字，在沒有井字符號的行數輸入你的 commit 訊息（`#`符號是用來備註的）
+如果不小心忘記加 `-m` 參數，就會跳到一個神奇的介面，這時候莫慌莫怕，鍵盤上按一個 `i` 就可以移動游標和輸入文字，在沒有井字符號的行數輸入你的 commit 訊息（`#`符號是用來下註解的）
 
 ![](https://i.imgur.com/XV2Hl7t.png)
 
@@ -102,7 +103,7 @@ $ git commit -m"commit message"
 
 另外注意上上張圖，在 commit 放進儲存庫之後，右上角除了 commit message 外還有一串長長的亂碼字，那是 git 給每個版本的編號，當你想要回復某一個版本時 git 就是透過它在紀錄中找到，不會重複。
 
-如果想查看你做了幾個版本和詳細資料，可以使用 `git log` 指令
+如果想查看你做了幾個版本和詳細資料，可以使用 `git log` 指令，它就會列出之前的 Commit 紀錄
 ```
 $ git log
 ```
@@ -114,7 +115,7 @@ $ git log
 > 不過 Git 就只有這些東西嗎？有沒有更進階的呢？如果我不只想要紀錄版本，還想要修改、實驗一些半成品笑點、甚至放到網路上和別人一起寫笑話呢？
 
 
-這一份基本指令給你對照，那我們底下來說更多 Git 的使用狀況吧
+這一份基本指令給你對照，那我們底下會來說更多 Git 的使用狀況吧
 
 | Windows | 指令 | 操作  | 備註說明 |
 | -------- | -------- | -------- | -------- |
@@ -127,7 +128,7 @@ $ git log
 | git checkout | 回到某次 Commit 紀錄 | git checkout + `版本編碼` | git checkout master 回到最新狀態 |
 
 
-### 第三步：Git 哪有這麼簡單，一些小問題
+### Git 哪有這麼簡單，一些小問題
 
 #### Q: 如果在 git add 之後又修改了那個檔案？
 編輯內容並沒有再次被加到暫存區，得再次使用 git add 指令加至暫存區
@@ -218,7 +219,97 @@ config/database.yml
 3. 用 `git add .` 加入檔案，因為是新增的檔案，不能直接用`git comiit -am` （他們並非修改，他們本身還不在暫存區）
 4. 但如果是已經加入過、修改的檔案，可直接用上面那個合併指令
 
-### 第四步：還有還有，來認識一下分支吧
+### 對了，Commit Message 到底要怎麼寫？
+> 命名習慣，如何寫好 Commit Message
+* Commit Message 要能回答 Why 及 What
+* 可以加上 issue 編號，方便追蹤
+* 每一個獨立的 Commit 點
+* 要把 Git 當作歷史查閱的工具
+
+**約定式提交**
+```
+<類型>(可選的作用範圍): <描述>
+
+[可選的正文]
+
+[可選的頁腳]
+```
+#### Commit Message 規範組成
+```
+//範例
+Header: <type>(<scope>): <subject>
+ - type: 代表 commit 的類別
+ - scope 代表 commit 影響範圍
+ - subject 代表此 commit 的簡短描述，結尾不要加句號
+
+Body:（問題/原因/調整）
+ * Body 部份是對本次 Commit 的詳細描述，可以列點分成多行
+ * 說明程式碼變動項目與原因，還有與先前行為的對比
+
+Footer: 
+ - 填寫任務編號（如果有的話）
+ - BREAKING CHANGE（可忽略）
+```
+
+#### 範例一：Commit Message 
+
+```
+fix: 意見反應，信件看不到圖片問題
+
+問題：
+1. 客戶反應：意見反應的信件都看不到圖片。
+
+原因：
+1. 目前程式碼都會要求先登入後才可查看使用者上傳的檔案，
+   造成在信件上會看不見圖片的問題。
+
+調整項目：
+1. File.php，經討論後，開放讓意見反應頁面上傳的檔案，不用登入就可以查看/下載。
+
+issue #1229
+```
+
+#### 範例二：Commit Message 
+
+```
+refactor: 表單統計，語意化調整
+
+匯出表單時的表單答題資料，
+應該是以表單 $assessment_result  為基準做統計，
+故更改變數名稱 $user => $assessment_result
+
+issue #1200
+```
+
+**type 允許類別**
+* 不同的 Type 會決定進行 code review 的檢視角度，可以提升速度
+* 開發團隊應該要對 Type 使用有一致認同
+
+| type | 類別 | 意義 |
+| -------- | -------- | -------- |
+| feat | 新增/修改功能 | 即需求異動 |
+| fix | 修補 bug |  |
+| docs | 文件 |  |
+| style | 調整格式 | 不影響程式碼運行的變動 |
+| refactor | 重構 | 重構本質是不會影響既有的功能 |
+| perf | 改善效能 | A code change that improves performance |
+| test | 增加測試 |  |
+| chore | 建構程序或輔助工具的變動 | maintain |
+| revert | 撤銷回覆先前的 commit | 例如：revert: type(scope): subject (回覆版本：xxxx) |
+
+
+**BREAKING CHANGE　提交**
+在 Body 或是 Footer 起始文字為 `BREAKING CHANGE:` 的提交
+* 必須是大寫
+* 通常表示有重大的 API 變更 
+
+#### 參考連結
+- [angular/CONTRIBUTING.md at master · angular/angular](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit)
+ - [Git Commit Message 這樣寫會更好，替專案引入規範與範例](https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html)
+- [約定式提交](https://www.conventionalcommits.org/zh-hant/v1.0.0-beta.4/) 
+
+
+### 還有還有，來認識一下分支吧
 在增加新功能、修正 Bug，或是想試一些新做法時，其實可以透過另外叫「branch」的東西，做一個分支來進行測試，等做完確認沒問題之後再合併回來，不會影響正在運行的功能
 
 ```
@@ -319,7 +410,7 @@ Reset 指令可以搭配參數使用，有三種模式：
 ![](https://i.imgur.com/Jm3aBpx.png)
 2. 建立後系統會提示你該怎麼做，將程式碼複製下來去 cmd 操作
 ![](https://i.imgur.com/BZSzARM.png)
-3. 操作遠端和本地的溝通
+3. 操作遠端和本地溝通的指令
 
 ```
 #1 指定(-u)將 本地master 推到 origin的master
@@ -368,8 +459,7 @@ git pull origin master
 
 ### 參考資料
 1. [Git 基礎 - 取得一個 Git 倉儲](https://git-scm.com/book/zh-tw/v2/Git-%E5%9F%BA%E7%A4%8E-%E5%8F%96%E5%BE%97%E4%B8%80%E5%80%8B-Git-%E5%80%89%E5%84%B2)
-2. 如果想了解 `.git` 資料夾裡面有什麼請點[連結](https://git-scm.com/book/zh-tw/v2/Git-Internals-Plumbing-and-Porcelain#ch10-git-internals)
-3. [工作區、暫存區與儲存庫](https://gitbook.tw/chapters/using-git/working-staging-and-repository.html)
-4. [Git Gud: The Working Tree, Staging Area, and Local Repo](https://medium.com/@lucasmaurer/git-gud-the-working-tree-staging-area-and-local-repo-a1f0f4822018)
-5. [為自己學 Git](https://gitbook.tw/)
-6. [與其它開發者的互動 - 使用 Pull Request](https://gitbook.tw/chapters/github/pull-request.html)、[什麼是 Pull Request?](https://medium.com/@shoujhengduan/%E4%BB%80%E9%BA%BC%E6%98%AF-pull-request-b476ee3e0217)
+2. [工作區、暫存區與儲存庫](https://gitbook.tw/chapters/using-git/working-staging-and-repository.html)
+3. [Git Gud: The Working Tree, Staging Area, and Local Repo](https://medium.com/@lucasmaurer/git-gud-the-working-tree-staging-area-and-local-repo-a1f0f4822018)
+4. [為自己學 Git](https://gitbook.tw/)
+5. [與其它開發者的互動 - 使用 Pull Request](https://gitbook.tw/chapters/github/pull-request.html)、[什麼是 Pull Request?](https://medium.com/@shoujhengduan/%E4%BB%80%E9%BA%BC%E6%98%AF-pull-request-b476ee3e0217)
