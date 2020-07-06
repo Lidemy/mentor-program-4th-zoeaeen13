@@ -2,10 +2,11 @@
 function join(arr, concatStr) {
     var newStr = ''
     for(let i = 0; i < arr.length; i++) {
+        //最後一個字的後面，不需要再放 concatStr
         if(i === arr.length-1) {
-            newStr = newStr + arr[i]
+            newStr += arr[i]
         } else {
-            newStr = newStr + arr[i] + concatStr
+            newStr += arr[i] + concatStr
         }
     }
     
@@ -15,8 +16,8 @@ function join(arr, concatStr) {
 //實作 repeat 函式
 function repeat(str, times) {
     var newStr = ''
-    for(let i=1; i<=times; i++) {
-        newStr = newStr + str
+    for(let i = 1; i <= times; i++) {
+        newStr += str
     }
     return newStr
 }
