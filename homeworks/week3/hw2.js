@@ -15,7 +15,7 @@ rl.on('line', (line) => {
 // 先判斷水仙花數
 function isNarcissistic(num) {
   if (num < 10) {
-    return 'true'; // 如果個位數 => 水仙花數
+    return true; // 如果個位數 => 水仙花數
   }
   const str = String(num);
   const digit = str.length;
@@ -24,17 +24,15 @@ function isNarcissistic(num) {
   for (let i = 0; i < digit; i += 1) {
     total += Math.pow(Number(str[i]), digit);
   }
-  return total === num ? 'true' : 'false';
+  return total === num;
 }
 
 // 印出範圍內的水仙花數
 function printNumbers(input) {
-  const nums = input[0].split(' ');
-  const fromN = Number(nums[0]);
-  const toN = Number(nums[1]);
+  const [fromN, toN] = input[0].split(' ');
 
-  for (let i = fromN; i <= toN; i += 1) {
-    if (isNarcissistic(i) === 'true') {
+  for (let i = Number(fromN); i <= Number(toN); i += 1) {
+    if (isNarcissistic(i)) {
       console.log(i);
     }
   }
