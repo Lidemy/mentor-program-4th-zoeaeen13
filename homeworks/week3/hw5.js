@@ -21,19 +21,14 @@ function whoWin(a, b, rule) {
   if (rule === '1') {
     return a > b ? 'A' : 'B';
   }
-  // 當比數字小
-  if (rule === '-1') {
-    return a > b ? 'B' : 'A';
-  }
 
-  // default 回傳值
-  return 'A';
+  return a > b ? 'B' : 'A';
 }
 
 function showResult(input) {
   for (let i = 1; i < input.length; i += 1) {
-    const nums = input[i].split(' ');
-    console.log(whoWin(BigInt(nums[0]), BigInt(nums[1]), nums[2]));
+    const [a, b, rule] = input[i].split(' ');
+    console.log(whoWin(BigInt(a), BigInt(b), rule));
   }
 }
 

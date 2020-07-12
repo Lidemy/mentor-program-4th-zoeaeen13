@@ -29,9 +29,9 @@ function isNarcissistic(num) {
 
 // 印出範圍內的水仙花數
 function printNumbers(input) {
-  const [fromN, toN] = input[0].split(' ');
+  const [fromN, toM] = input[0].split(' ');
 
-  for (let i = Number(fromN); i <= Number(toN); i += 1) {
+  for (let i = Number(fromN); i <= Number(toM); i += 1) {
     if (isNarcissistic(i)) {
       console.log(i);
     }
