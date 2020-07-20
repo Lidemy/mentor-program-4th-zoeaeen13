@@ -21,8 +21,11 @@ function callback(error, response, body) {
     for (let i = 0; i < gameList.length; i += 1) {
       console.log(`${gameList[i].viewers} ${gameList[i].game.name}`);
     }
+  } else {
+    console.log('伺服器錯誤');
   }
 }
+
 function getTopGames() {
   request.get(options, callback);
 }
