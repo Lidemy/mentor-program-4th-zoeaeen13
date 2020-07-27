@@ -15,11 +15,15 @@ const options = {
 };
 
 function callback(error, response, body) {
-  if (response.statusCode === 200) {
-    const mBody = JSON.parse(body);
-    const gameList = mBody.top;
-    for (let i = 0; i < gameList.length; i += 1) {
-      console.log(`${gameList[i].viewers} ${gameList[i].game.name}`);
+  if (response.statusCode >= 200 && response.statusCode < 300) {
+    try {
+      const mBody = JSON.parse(body);
+      const gameList = mBody.top;
+      for (let i = 0; i < gameList.length; i += 1) {
+        console.log(`${gameList[i].viewers} ${gameList[i].game.name}`);
+      }
+    } catch (e) {
+      console.log(e);
     }
   } else {
     console.log('伺服器錯誤');

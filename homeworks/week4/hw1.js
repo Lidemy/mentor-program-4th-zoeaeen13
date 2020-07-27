@@ -9,9 +9,15 @@ request.get(
     },
   },
   (error, response, body) => {
-    const bookData = JSON.parse(body);
-    for (let i = 0; i < bookData.length; i += 1) {
-      console.log(`${bookData[i].id} ${bookData[i].name}`);
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      try {
+        const bookData = JSON.parse(body);
+        for (let i = 0; i < bookData.length; i += 1) {
+          console.log(`${bookData[i].id} ${bookData[i].name}`);
+        }
+      } catch (e) {
+        console.log(e);
+      }
     }
   },
 );

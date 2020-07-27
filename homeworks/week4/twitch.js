@@ -22,13 +22,17 @@ function getStreamList(mOffset) {
   };
 
   function callback(error, response, body) {
-    if (response.statusCode === 200) {
-      const mBody = JSON.parse(body);
-      const streamList = mBody.streams;
-      for (let i = 0; i < streamList.length; i += 1) {
-        console.log('===============');
-        console.log(`排名：${i + 1 + mOffset} 名稱：${streamList[i].channel.display_name}`);
-        console.log(`ID：${streamList[i]._id} 觀看人數：${streamList[i].viewers}`);
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      try {
+        const mBody = JSON.parse(body);
+        const streamList = mBody.streams;
+        for (let i = 0; i < streamList.length; i += 1) {
+          console.log('===============');
+          console.log(`排名：${i + 1 + mOffset} 名稱：${streamList[i].channel.display_name}`);
+          console.log(`ID：${streamList[i]._id} 觀看人數：${streamList[i].viewers}`);
+        }
+      } catch (e) {
+        console.log(e);
       }
     }
   }

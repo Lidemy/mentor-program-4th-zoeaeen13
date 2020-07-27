@@ -39,9 +39,15 @@ function showBooklist() {
 
   const req = https.request(options, (res) => {
     res.on('data', (d) => {
-      const bookData = JSON.parse(d);
-      for (let i = 0; i < bookData.length; i += 1) {
-        console.log(`${bookData[i].id} ${bookData[i].name}`);
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        try {
+          const bookData = JSON.parse(d);
+          for (let i = 0; i < bookData.length; i += 1) {
+            console.log(`${bookData[i].id} ${bookData[i].name}`);
+          }
+        } catch (e) {
+          console.log(e);
+        }
       }
     });
   });
@@ -63,11 +69,15 @@ function getBookInfo(bookId) {
 
   const req = https.request(options, (res) => {
     res.on('data', (d) => {
-      const bookData = JSON.parse(d);
-      if (bookData.id === undefined) {
-        console.log(`找不到 id 為 ${bookId} 的書籍`);
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        try {
+          const bookData = JSON.parse(d);
+          console.log(`書籍ID: ${bookData.id}, 書名: ${bookData.name}`);
+        } catch (e) {
+          console.log(e);
+        }
       } else {
-        console.log(`書籍ID: ${bookData.id}, 書名: ${bookData.name}`);
+        console.log(`找不到 id 為 ${bookId} 的書籍`);
       }
     });
   });
@@ -89,9 +99,10 @@ function deleteBook(bookId) {
 
   const req = https.request(options, (res) => {
     res.on('data', (d) => {
-      const body = JSON.parse(d);
-      if (body.id === undefined) {
+      if (res.statusCode >= 200 && res.statusCode < 300) {
         console.log(`已刪除 id 是 ${bookId} 的書籍`);
+      } else {
+        console.log(`找不到 id 為 ${bookId} 的書籍`);
       }
     });
   });
@@ -121,8 +132,12 @@ function addBook(bookName) {
 
   const req = https.request(options, (res) => {
     res.on('data', (d) => {
-      const bookData = JSON.parse(d);
-      console.log(`新增 id 是 ${bookData.id}，書名為「 ${bookData.name}」`);
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        const bookData = JSON.parse(d);
+        console.log(`新增 id 是 ${bookData.id}，書名為「 ${bookData.name}」`);
+      } else {
+        console.log('新增失敗');
+      }
     });
   });
 
@@ -151,8 +166,16 @@ function updateBookName(bookId, bookName) {
 
   const req = https.request(options, (res) => {
     res.on('data', (d) => {
-      const bookData = JSON.parse(d);
-      console.log(`修改 id 是 ${bookData.id} 的書名為「${bookData.name}」`);
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        try {
+          const bookData = JSON.parse(d);
+          console.log(`修改 id 是 ${bookData.id} 的書名為「${bookData.name}」`);
+        } catch (e) {
+          console.log(e);
+        }
+      } else {
+        console.log('修改失敗');
+      }
     });
   });
 
