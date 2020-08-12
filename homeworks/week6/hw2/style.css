@@ -1,6 +1,6 @@
 .debug *, .debug {
     background: #f2f4f6;
-    /* outline: solid 1px red; */
+    outline: solid 1px red;
     margin: 0;
     padding: 0;
 }
@@ -167,6 +167,23 @@ input:checked + label > span {
     margin: -2px 10px 0 0;
     vertical-align: middle;
     cursor: pointer;
+}
+
+.footer {
+    display: block;
+    box-sizing: border-box;
+    height: 60px;
+    background: black;
+    color: #999999;
+    line-height: 60px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0 auto;
+    background: transparent;
+    text-align: center;
 }
 
 

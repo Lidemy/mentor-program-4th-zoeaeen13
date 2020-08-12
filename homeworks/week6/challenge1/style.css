@@ -1,0 +1,205 @@
+.debug *, .debug {
+    background: #f2f4f6;
+    /* outline: solid 1px gold; */
+    margin: 0;
+    padding: 0;
+    background: transparent;            
+}
+
+html {
+    font-family: 'Verdana', 'Geneva', 'sans-serif';
+}
+
+a {
+    text-decoration: none;
+}
+
+.news {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 10px;
+    background: 10px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    background: #ff6600;
+    padding: 0 0 0 2px;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    align-items: center;
+}
+
+.navbar a {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+}
+
+.nav .nav-icon {
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    border: 1px solid white;
+    background-image: url(./y18.gif);
+    background-size: cover no-repeat;
+}
+
+.nav-login {
+    color: black;
+    background: transparent;
+    text-align: right;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+.nav-table {
+    margin: 3px 0 3px 0;
+}
+
+.nav-table td:first-child {
+    padding: 0 5px 0 5px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.nav-table td + td {
+    cursor: pointer;
+}
+
+.nav-table td + td::after {
+    content: "|";
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: default;
+}
+
+.nav-table td:nth-child(8)::after {
+    content: "";
+}
+
+
+.news-content {
+    padding-left: 10px;
+    padding-top: 10px;
+    background: #F6F6EF;
+    border-bottom: solid 2px #ff6600;
+}
+
+.footer {
+    padding: 14px;
+    background:  #F6F6EF;
+}
+
+.footer form {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #828282;
+    text-align: center;
+}
+
+.footer input {
+    background: white;
+    border: .5px solid black;
+    border-radius: 2px;
+    margin: 5px;
+    padding: 2px;
+}
+
+.footer input:focus {
+    outline: none;
+}
+
+.footer-table {
+    margin: 0 auto;
+}
+
+.footer-table td {
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.footer-table td + td::before {
+    content: "|";
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: default;
+}
+
+.item {
+    margin-bottom: 10px ;
+}
+
+.item-Num {
+    font-size: 13px;
+    color: #828282;
+    font-weight: bold;
+}
+
+.item-Title {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.item-Title a {
+    font-size: 9px;
+    color: #828282;
+    margin: 0 5px 0 5px;
+}
+
+.item-Num::after {
+    content: ".▲";
+}
+
+.item-sub, .item-sub a {
+    font-size: 10px;
+    color: #828282;
+}
+
+.item-sub a + a::before {
+    content: "|";
+    margin: 0 5px 0 5px;
+}
+
+.item-sub .item-Num {
+    visibility: hidden;
+}
+
+.btn-more {
+    font-size: 14px;
+    font-weight: 400;
+    color: #828282;
+    border: none;
+    margin: 16px 0 16px 24px;
+}
+
+
+
+@media (max-width: 768px) {
+    .footer-table tr{
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .news {
+        width: 100%;
+        border: solid 1px red;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .news {
+        width: 100%;
+        border: solid 1px red;
+    }
+
+}
