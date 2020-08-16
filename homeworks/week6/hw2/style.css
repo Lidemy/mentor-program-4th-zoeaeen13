@@ -1,6 +1,6 @@
 .debug *, .debug {
     background: #f2f4f6;
-    outline: solid 1px red;
+    /* outline: solid 1px red; */
     margin: 0;
     padding: 0;
 }
