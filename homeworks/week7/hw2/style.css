@@ -1,0 +1,411 @@
+.debug *, .debug {
+    /* outline: solid 1px gold; */
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: '微軟正黑體';
+}
+
+.wrapper {
+    padding: 0px 24px;
+    text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.section__title {
+    font-size: 32px;
+    color: black;
+    font-weight: 600;
+    display: inline-block;
+    border-left: 15px solid #a3dea2;
+    padding-left: 16px;
+    margin: 80px 0 26px 0;
+    box-sizing: border-box;
+}
+
+/* header */
+.navbar {
+    height: 84px;
+    box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 96px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.nav__site-name {
+    font-size: 36px;
+    color: #489846;
+    font-weight: normal;
+}
+
+.nav__list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav__list li {
+    list-style: none;
+}
+
+.nav__list a {
+    box-sizing: border-box;
+    display: block;
+    padding: 14px 25px;
+    text-decoration: none;
+    background: white;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #010101;
+    transition: all .2s ease-in;
+    font-weight: 700;
+}
+
+.nav__active a, .nav__list a:hover {
+    background: #ff7286;
+    color: white;
+}
+
+.nav__list li + li {
+    margin-left: 30px;
+}
+
+.banner__image {
+    position: relative;
+    height: 500px;
+    background-image: url(./banner.png);
+    background-size: cover;
+}
+
+.banner__image::after {
+    content: "";
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.banner__title {
+    z-index: 2;
+    font-size: 60px;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.intro {
+    font-size: 16px;
+    line-height: 2em;
+    padding: 0px 24px 54px 24px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons a {
+    display: block;
+    padding: 60px 80px;
+    font-size: 30px;
+    color: #3e613d;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: ease-in .2s all;
+}
+
+.buttons a:hover {
+    transform: scale(1.05);
+}
+
+.btn-order {
+    margin-right: 23px;
+    background: #a8e8e1;
+}
+
+.btn-check {
+    background: #f9f9b5;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu img {
+    width: 25%;
+    background-size: cover no-repeat;
+}
+
+.footer {
+    margin-top: 40px;
+}
+
+.footer__bottom {
+    display: block;
+    height: 48px;
+    background: #35564b;
+    text-align: center;
+    margin: 0 auto;
+    color: white;
+    font-size: 16px;
+    line-height: 48px;
+    padding: 0px 16px;
+}
+
+.footer__top {
+    background: #e8efee;
+}
+
+.footer__top .wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 35px 16px;
+}
+
+.footer__info {
+    text-align: left;
+    line-height: 2em;
+    font-size: #484848;
+    color: #484848;
+}
+
+.footer__top h2  {
+    font-size: 30px;
+    color: #489846;
+    text-align: right;
+}
+
+.footer__social-link {
+    text-align: right;
+}
+
+.comments {
+    display: flex;
+    margin-top: 80px;
+}
+
+.comments div + div {
+    margin-left: 16px;
+}
+
+.comments > div {
+    position: relative;
+    flex: 1;
+    font-size: 16px;
+    color: black;
+    display: inline-block;
+    padding: 90px 20px 40px 20px;
+    border-radius: 5px;
+    border: #c7e5ec solid 1px;
+    box-shadow: -1.4px -1.4px 6px 0 #d8eaef;
+}
+
+.comment_avatar {
+    position: absolute;
+    left: 50%;
+    top: -52.5px;
+    transform: translate(-50%, 0);
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    border: 1px #c1c1c1 solid;
+}
+
+.comment_avatar div {
+    margin-top: 5px;
+    font-size: 16px;
+    color: black;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-size: cover no-repeat;
+    white-space: nowrap;
+
+}
+
+.avatar1 {
+    background-image: url(./p-1.png);
+}
+
+.avatar2 {
+    background-image: url(./p-2.png);
+}
+
+.avatar3 {
+    background-image: url(./p-3.png);
+}
+
+.resaurant__faq {
+    max-width: 810px;
+    margin: 0 auto;
+}
+
+.faqItem {
+    border-bottom: 1px solid #a6e2c0;
+}
+
+.faqQuestion {
+    text-align: left;
+    padding: 24px 0 24px 0;
+    cursor: pointer;
+}
+
+.faqAnswer {
+    display: flex;
+    padding: 0 20px 45px 0;
+    cursor: pointer;
+}
+
+.hideAnswer {
+    display: none;
+}
+
+.faqAnswer div {
+    visibility: hidden;
+}
+
+.faqAnswer p {
+    display: inline-block;
+    text-align: left;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.faqNum {
+    display: inline-block;
+    font-size: 24px;
+    color: hsl(136, 30%, 57%);
+    font-weight: bold;
+    margin:0 16px 0 16px;
+}
+
+.faqTitle {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* 平板尺寸 */
+@media(max-width: 768px) {
+    .navbar {
+        height: 100px;
+    }
+    .navbar .wrapper {
+        flex-direction: column;
+        justify-content: center; 
+        padding: 0px 0px;
+    }
+
+    .nav__list {
+        margin-top: 12px;
+        display: flex;
+    }
+
+    .nav__list a {
+        white-space: nowrap;
+        text-align: center;
+        font-size: 16px;
+        padding: 10px 18px;
+    }
+
+    .nav__list li + li {
+        margin-left: 20px;
+    }
+
+    .banner__image {
+        height: 280px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .buttons a:first-child {
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+
+    .intro {
+        padding: 16px 16px 54px 16px;
+    }
+
+    .google-map {
+        height: 350px;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu img {
+        width: 80%;
+    }
+    .menu img + img {
+        margin-top: 16px;
+    }
+
+    .footer__bottom {
+        height: 100%;
+    }
+
+    .footer__top .wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .footer__top h2, .footer__social-link {
+        text-align: left;
+    }
+
+    .comments {
+        display: block;
+    }
+
+    .comments div + div {
+        margin: 0;
+        margin-top: 80px;
+    }
+
+}
+
+/* 手機版面 */
+@media(max-width: 480px) {
+    .nav__list a {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+
+    .banner__image {
+        height: 200px;
+    }
+
+    .banner__title {
+        font-size: 36px;
+    }
+
+    .buttons {
+        width: 75%;
+    }
+}

@@ -1,0 +1,167 @@
+.debug *, .debug {
+    /* outline: solid 1px gold; */
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: '微軟正黑體', 'sans-serif';
+}
+
+.debug {
+    background: #f4f5f9;
+}
+
+.dashboard, .addTaskBoard {
+    padding: 20px;
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    text-align: center;
+    background: white;
+    border-radius: 15px;
+}
+.dashboard {
+    margin-top: 20px;
+}
+
+.dashboard h1, .addTaskBoard h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #313131;
+}
+
+.dashboard h3, .addTaskBoard h3 {
+    font-size: 15px;
+    margin-top: 8px;
+    color: #cdcfd4;
+    font-weight: bold;
+}
+
+.dashboard h1 > span, .addTaskBoard h1 > span {
+    font-size: 28px;
+    color: #cdcfd4;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.hideBoard {
+    display: none;
+}
+
+
+.taskList {
+    margin-top: 25px;
+}
+
+.btnAddTask, .btnConfirm {
+    width: 48px;
+    height: 48px;
+    padding: 15px;
+    margin: 0 auto;
+    background: #E03535;
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: ease-in all .2s;
+}
+
+.btnConfirm {
+    background: #3A2B85;
+}
+
+.btnAddTask:hover {
+    transform: scale(1.05);
+}
+
+.addTask img{
+    width: 100%;
+    text-align: center;
+    vertical-align: center;
+}
+
+.listItem {
+    display: flex;
+    margin: 5px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 80%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.checkobx > div {
+    width: 15px;
+    height: 15px;
+    border: solid 2px #ebecf2;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btnDelete {
+    display: absolute;
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.btnDelete img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.taskName {
+    font-weight: bold;
+}
+
+.taskTime {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #d1d1d1;
+}
+
+.taskName, .taskTime {
+    text-align: left;
+}
+
+.finished {
+    z-index: 2;
+    background: linear-gradient(to right, #f2f4f6, #fafafa);
+}
+
+.finished-taskName {
+    z-index: 2;
+    color: #E03535;
+    text-decoration:line-through;
+    cursor: pointer;
+}
+
+.finished-checkbox {
+    visibility: hidden;
+}
+
+.inputGroup input {
+    color: #333;
+    font-size: 16px;
+    margin: 8px auto;
+    padding: .5rem .8rem;
+    border-radius: 0.5rem;
+    border: #f4f5f9 solid 1.5px;
+    width: 60%;
+    transition: all 0.3s;
+}
+
+.inputGroup input:focus {
+    outline: none;
+}
+
+
+@media (max-width: 768px) {
+    .dashboard, .addTaskBoard {
+        width: 90%;
+    }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="demo.js"></script>
+    <title>Form</title>
+</head>
+<body class="debug">
+    <!-- onsubmit 設定 -->
+    <form class="form" name="procrastination" method="GET" onsubmit="return showResult()">
+    
+        <div></div>
+        <section class="wrapper">
+            <div class="activity__title">
+                新拖延運動報名表單
+            </div>
+            <div class="activity__desc">
+                活動日期：2020/12/10 ~ 2020/12/11<br>
+                活動地點：台北市大安區新生南路二段1號
+            </div>
+            <div class="remind">*必填</div>
+
+            <section class="form-block" id="nickname">
+                <div class="question">
+                    暱稱
+                </div>
+                <input class="input" name="nickname" type="text" placeholder="您的回答">
+                <p>這是必填問題</p>
+            </section>
+
+            <section class="form-block" id="email">
+                <div class="question">
+                    電子郵件
+                </div>
+                <input class="input" name="email" type="email" placeholder="您的電子郵件">
+                <p>這是必填問題</p>
+            </section>
+
+            <section class="form-block" id="phone">
+                <div class="question">
+                    手機號碼
+                </div>
+                <input class="input" name="phone" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="您的手機號碼">
+                <p>這是必填問題</p>
+            </section>
+
+            <section class="form-block" id="signup">
+                <div class="question">
+                    報名類型
+                </div>
+
+                <div class="radio-group">
+                    <div>
+                        <input type="radio" id="choice1" name="choices" data-value="躺在床上用想像力實作">
+                        <label for="choice1"><span></span>躺在床上用想像力實作</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="choice2" name="choices" data-value="趴在地上滑手機找現成的">
+                        <label for="choice2"><span></span>趴在地上滑手機找現成的</label>    
+                    </div>
+                </div>
+                <p>這是必填問題</p>
+            </section>
+
+            <section class="form-block" id="resource">
+                <div class="question">
+                    怎麼知道這個活動的？
+                </div>
+                <input class="input" name="resource" class="" type="text" placeholder="您的回答">
+                <p>這是必填問題</p>
+            </section>
+
+            <section class="form-block">
+                <div class="others">
+                    其他
+                    <div>
+                        對活動的一些建議
+                    </div>
+                </div>
+                <input class="input" type="text" placeholder="您的回答" name="advice">
+            </section>
+
+            <input class="btn-submit" type="submit" placeholder="提交">
+
+            <div class="suggestion">請勿透過表單送出您的密碼。</div>
+        </section>
+    </form>
+
+    <footer class="footer">
+        <div>
+            © 2020 © Copyright. All rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>

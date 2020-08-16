@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <title>TODO List</title>
+</head>
+<body class="debug">
+    <div class="dashboard">
+        <section class="boardTitle">
+            <h1>Tasks<span>Lists</span></h1>
+            <h3></h3>
+        </section>
+
+        <section class="taskList">
+            <div class="listItem">
+                <div class="checkobx">
+                    <div class="checkbox-img"></div>
+                </div>
+                <div class="listItem-content">
+                    <div class="taskName">yoga class at 10:00</div>
+                    <div class="taskTime">2019-08-24</div>
+                </div>
+                <div class="btnDelete">
+                    <img class="btnDelete-img" src="/cross.png">
+                </div>
+            </div>
+
+            <div class="listItem finished">
+                <div class="checkobx finished-checkbox">
+                    <div class="checkbox-img"></div>
+                </div>
+                <div class="listItem-content">
+                    <div class="taskName finished-taskName">Jade Mountain hiking</div>
+                    <div class="taskTime">2020-09-10</div>
+                </div>
+                <div class="btnDelete">
+                    <img class="btnDelete-img" src="/cross.png">
+                </div>
+            </div>
+
+            <div class="listItem">
+                <div class="checkobx">
+                    <div class="checkbox-img"></div>
+                </div>
+                <div class="listItem-content">
+                    <div class="taskName">Run 3 miles</div>
+                    <div class="taskTime">2020-08-17</div>
+                </div>
+                <div class="btnDelete">
+                    <img class="btnDelete-img" src="/cross.png">
+                </div>
+            </div>
+
+        </section>
+
+        <div class="addTask">
+            <div class="btnAddTask">
+                <img src="./plus.png">
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="addTaskBoard hideBoard">
+        <section class="addTaskBoardTitle">
+            <h1>Add<span>Tasks</span></h1>
+            <h3>The to do list to organize work & life</h3>
+        </section>
+
+        <div class="inputGroup">
+            <input type="text" class="inputTask" id="name" placeholder="Task" required=""/>
+            <input type="date" class="inputDate"/>
+            <div class="addTask">
+                <div class="btnConfirm">
+                    <img src="./plus.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="demo.js"></script>
+</html>
