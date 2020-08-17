@@ -7,11 +7,32 @@ P.S 附上每個作業的連結，方便助教直接查看和批改
 
 * hw2：活動報名表單  https://zoeaeen13.github.io/Demo/week6/hw2/
 
-* challenge：Hacker News  
+* challenge：Hacker News https://zoeaeen13.github.io/Demo/week6/challenge1/
 
 ---
 
-#### ▲ Block 元素的水平置中： `margin: 0 auto`
+#### ▲ 子層圓角問題
+
+作業二中，我有參考正常 Google 表單的樣式，上邊會有一條主題色的邊線，同時還要有表單的圓角，為了提高作業美觀程度就多加上這塊，原以為簡單的設置一下就好，沒想到踩了一個坑！
+
+![](https://i.imgur.com/W3jG5Dg.png)
+
+問題找很久，發現是表格裡面包的白色背景給擋住了，那就給白色背景的 div 也加上 border-radius 圓角屬性，沒想到越弄越糟，表單底部是處理好了，可是黃色頂部還是一樣，總不能也為黃色線另外加入左上、右上兩個圓角吧？ => 我認為 [CSS3 圆角无效](http://alfred-sun.github.io/tuliangblog/CSS3-radius-invalid/) 這篇解法不夠漂亮
+
+![](https://i.imgur.com/JnEbm1V.png)
+
+最好方法，應該是讓外層的表單圓角顯示出來，而超出部分不出現，於是研究了 [overflow 屬性](https://www.w3.org/TR/CSS21/visufx.html)，還有在 [stack overflow](https://stackoverflow.com/questions/8582176/should-border-radius-clip-the-content) 上也有討論這類問題：
+> The default overflow for` <div>` elements (and most other things) is visible, and the spec says this about overflow: visible:
+
+**overflow: visible 效果**
+> This value indicates that content is not clipped, i.e., it may be rendered outside the block box.
+
+如果我們沒有設置，多數元素的 overflow 預設屬性是 visible，而不是 auto！为了讓子元素不超出容器圓角邊框，容器的 overflow 屬性必须是除visible 之外的其他值（比如 auto, hidden, scroll 等）
+
+<br>
+<br>
+
+#### ▲ Block 元素的水平置中方法： `margin: 0 auto`
 在做餐廳介面時，有些區塊並不需要滿版，老師示範有設置一個 wrapper 包住、並讓裡面的東西置中（例如標題），使用到了 margin 這個屬性：
 
 **用法**
@@ -73,24 +94,6 @@ div {
     margin: auto;/* 加它可以自動居中 */
 }
 ```
-
-#### ▲ 子層圓角問題
-
-作業二中，我有參考正常 Google 表單的樣式，上邊會有一條主題色的邊線，同時還要有表單的圓角，為了提高作業美觀程度就多加上這塊，原以為簡單的設置一下就好，沒想到踩了一個坑！
-
-![](https://i.imgur.com/W3jG5Dg.png)
-
-問題找很久，發現是表格裡面包的白色背景給擋住了，那就給白色背景的 div 也加上 border-radius 圓角屬性，沒想到越弄越糟，表單底部是處理好了，可是黃色頂部還是一樣，總不能也為黃色線另外加入左上、右上兩個圓角吧？ => 我認為 [CSS3 圆角无效](http://alfred-sun.github.io/tuliangblog/CSS3-radius-invalid/) 這篇解法不夠漂亮
-
-![](https://i.imgur.com/JnEbm1V.png)
-
-最好方法，應該是讓外層的表單圓角顯示出來，而超出部分不出現，於是研究了 [overflow 屬性](https://www.w3.org/TR/CSS21/visufx.html)，還有在 [stack overflow](https://stackoverflow.com/questions/8582176/should-border-radius-clip-the-content) 上也有討論這類問題：
-> The default overflow for` <div>` elements (and most other things) is visible, and the spec says this about overflow: visible:
-
-**overflow: visible 效果**
-> This value indicates that content is not clipped, i.e., it may be rendered outside the block box.
-
-如果我們沒有設置，多數元素的 overflow 預設屬性是 visible，而不是 auto！为了讓子元素不超出容器圓角邊框，容器的 overflow 屬性必须是除visible 之外的其他值（比如 auto, hidden, scroll 等）
 
 
 ### 參考資料：
