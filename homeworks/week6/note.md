@@ -1,5 +1,5 @@
-## 筆記
-人生第一次切版，很多地方不熟練或根本沒看過，筆記一些寫作業過程中特別去查、踩到的坑，希望幫助自己在之後切類似的版型時，可以馬上想到並用到，正因為切版需要時間去累積經驗，每一次的經驗都得好好記錄。
+## Week6 作業筆記
+人生第一次切版，很多地方不熟練或根本沒看過，筆記一些作業過程中特別去查、踩到的坑，希望幫助自己在之後切類似的版型時，可以馬上想到並用到，正因為切版需要時間去累積經驗，每一次的經驗都得好好記錄。
 
 P.S 附上每個作業的連結，方便助教直接查看和批改
 
@@ -26,7 +26,8 @@ P.S 附上每個作業的連結，方便助教直接查看和批改
 
 
 **為什麼可以水平置中？**
-margin 是複合屬性，也就是說 `margin: auto;` 寫法相當於 `margin: auto auto auto auto;`，分別對應上右下左四邊，但有趣的是，效果出來只有水平置中？為什麼沒有垂直置中呢？
+
+margin 是複合屬性，也就是說 `margin: auto;` 寫法相當於 `margin: auto auto auto auto;`，分別對應上右下左四邊，但有趣的是，效果出來只有水平置中，為什麼沒有垂直置中呢？
 
 >On the A edge and C edge, the used value is 0. On the B edge and D edge, the used value depends on the available space after calculations have been made for the widths, heights, and margins.
 

@@ -7,26 +7,27 @@
 }
 
 html {
-    font-family: 'Verdana', 'Geneva', 'sans-serif';
+  font-family: 'Verdana', 'Geneva', 'sans-serif';
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .news {
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 10px;
-    background: 10px;
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: 10px;
 }
 
 .nav {
-    display: flex;
-    justify-content: space-between;
-    background: #ff6600;
-    padding: 0 0 0 2px;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  background: #ff6600;
+  padding: 0 0 0 2px;
+  align-items: center;
 }
 
 .navbar {
@@ -34,6 +35,10 @@ a {
     flex-direction: row;
     background: transparent;
     align-items: center;
+}
+
+.navList {
+  padding: 3px;
 }
 
 .navbar a {
@@ -47,7 +52,7 @@ a {
     box-sizing: border-box;
     width: 18px;
     height: 18px;
-    border: 1px solid white;
+    border: .5px solid white;
     background-image: url(./y18.gif);
     background-size: cover no-repeat;
 }
@@ -58,33 +63,34 @@ a {
     text-align: right;
     margin-right: 6px;
     cursor: pointer;
+    font-size: 12px;
 }
 
-.nav-table {
-    margin: 3px 0 3px 0;
+.navbar div {
+  display: inline-block;
 }
 
-.nav-table td:first-child {
-    padding: 0 5px 0 5px;
-    font-weight: bolder;
+.nav-siteName {
+    font-size: 14px;
+    padding: 0 5px 0 0;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.nav-table td + td {
-    cursor: pointer;
+.nav-table span {
+  font-size: 12px;
 }
 
-.nav-table td + td::after {
+.nav-table span::after {
     content: "|";
     padding-left: 5px;
     padding-right: 5px;
     cursor: default;
 }
 
-.nav-table td:nth-child(8)::after {
+.nav-table span:nth-child(7)::after {
     content: "";
 }
-
 
 .news-content {
     padding-left: 10px;
@@ -98,9 +104,9 @@ a {
     background:  #F6F6EF;
 }
 
-.footer form {
+.footer .searchBox {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 12px;
     color: #828282;
     text-align: center;
 }
@@ -122,7 +128,7 @@ a {
 }
 
 .footer-table td {
-    font-size: 13px;
+    font-size: 10px;
     cursor: pointer;
 }
 
@@ -135,16 +141,18 @@ a {
 
 .item {
     margin-bottom: 10px ;
+    display: flex;
 }
 
 .item-Num {
-    font-size: 13px;
+    font-size: 10px;
     color: #828282;
     font-weight: bold;
+    margin-right: 5px;
 }
 
 .item-Title {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 400;
 }
 
@@ -173,7 +181,7 @@ a {
 }
 
 .btn-more {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     color: #828282;
     border: none;
@@ -188,19 +196,18 @@ a {
         display: flex;
         flex-wrap: wrap;
         align-content: center;
+        justify-content: center;
     }
 
     .news {
         width: 100%;
-        border: solid 1px red;
+        margin: 0;
     }
+
+
 
 }
 
 @media (max-width: 480px) {
-    .news {
-        width: 100%;
-        border: solid 1px red;
-    }
 
 }
