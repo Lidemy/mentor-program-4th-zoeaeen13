@@ -102,7 +102,33 @@ $ git branch -d week1
 #刪除本地分支week1
 ```
 
+###  如何和老師新增的東西同步？
+1. 先把自己目前改的東西全部 commit
+```
+git commit -am"finished"
+```
+2. 切回 master`，確認 working area 是乾淨的
+```
+git checkout master
+git status
+```
+3. 和老師的 master 同步，並輸入 commit message
+```
+git pull https... master
+git commit -am"update"
+```
+4. push 回自己的 github
+```
+git push origin master
+```
+5. 切換回寫作業的分支
+```
+git checkout week3
+```
+6. 繼續寫作業
+
 ---
+
 > 補充：git clone、git fetch 跟 git pull 這三個指令有什麼不同？
 
 #### git clone
