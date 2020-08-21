@@ -37,7 +37,7 @@ a {
     align-items: center;
 }
 
-.navList {
+.navlist {
   padding: 3px;
 }
 
@@ -70,7 +70,7 @@ a {
   display: inline-block;
 }
 
-.nav-siteName {
+.nav-site-name {
     font-size: 14px;
     padding: 0 5px 0 0;
     font-weight: bold;
@@ -104,7 +104,7 @@ a {
     background:  #F6F6EF;
 }
 
-.footer .searchBox {
+.footer .searchbox {
     margin-top: 10px;
     font-size: 12px;
     color: #828282;
@@ -144,25 +144,25 @@ a {
     display: flex;
 }
 
-.item-Num {
+.item-num {
     font-size: 10px;
     color: #828282;
     font-weight: bold;
     margin-right: 5px;
 }
 
-.item-Title {
+.item-title {
     font-size: 12px;
     font-weight: 400;
 }
 
-.item-Title a {
+.item-title a {
     font-size: 9px;
     color: #828282;
     margin: 0 5px 0 5px;
 }
 
-.item-Num::after {
+.item-num::after {
     content: ".▲";
 }
 
@@ -176,7 +176,7 @@ a {
     margin: 0 5px 0 5px;
 }
 
-.item-sub .item-Num {
+.item-sub .item-num {
     visibility: hidden;
 }
 
@@ -203,11 +203,4 @@ a {
         width: 100%;
         margin: 0;
     }
-
-
-
-}
-
-@media (max-width: 480px) {
-
 }
