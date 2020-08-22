@@ -147,10 +147,14 @@ html {
 }
 
 .menu {
+  text-align: center;
+}
+
+.menus {
     display: flex;
 }
 
-.menu img {
+.menus img {
     width: 25%;
     background-size: cover no-repeat;
 }
@@ -167,7 +171,7 @@ html {
     margin: 0 auto;
     color: white;
     font-size: 16px;
-    line-height: 48px;  /* 如何一行置中 */
+    line-height: 48px;
     padding: 0px 16px;
 }
 
@@ -175,8 +179,9 @@ html {
     background: #e8efee;
 }
 
-.footertop .wrapper {
+.footer-top .wrapper {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 35px 16px;
 }
@@ -305,15 +310,15 @@ html {
         height: 350px;
     }
 
-    .menu {
+    .menus {
         flex-direction: column;
         align-items: center;
     }
 
-    .menu img {
+    .menus img {
         width: 80%;
     }
-    .menu img + img {
+    .menus img + img {
         margin-top: 16px;
     }
 
