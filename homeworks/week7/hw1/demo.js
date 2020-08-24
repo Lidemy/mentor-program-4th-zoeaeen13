@@ -1,6 +1,6 @@
 /* eslint-disable no-alert,  no-unused-vars */
 
-// 檢查Radio Button
+// 檢查radio Button
 function checkRadio() {
   if (document.querySelectorAll('#signup input[type="radio"]:checked').length === 0) {
     document.querySelector('#signup').scrollIntoView();
@@ -61,7 +61,8 @@ function showResult() {
     電子郵件： ${document.forms.procrastination.email.value}
     手機號碼： ${document.forms.procrastination.phone.value}
     活動消息來源： ${document.forms.procrastination.resource.value}
-    其他建議： ${document.forms.procrastination.advice.value}`);
+    其他建議： ${document.forms.procrastination.advice.value}
+  `);
 
   return true;
 }
