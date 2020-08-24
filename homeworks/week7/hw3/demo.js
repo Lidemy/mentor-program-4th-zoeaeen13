@@ -1,34 +1,34 @@
-const list = document.querySelector('.taskList');
-const btnAddTask = document.querySelector('.btnAddTask');
-const btnConfirm = document.querySelector('.btnConfirm');
+const list = document.querySelector('.tasklist');
+const btnAddTask = document.querySelector('.btn-add');
+const btnConfirm = document.querySelector('.btn-confirm');
 const windows = document.querySelector('html');
 
 function toggleBoard() {
-  document.querySelector('.addTaskBoard').classList.toggle('hideBoard');
-  document.querySelector('.inputGroup input').value = '';
-  document.querySelector('.inputGroup input + input').value = '';
+  document.querySelector('.addBoard').classList.toggle('hideBoard');
+  document.querySelector('.input-group input').value = '';
+  document.querySelector('.input-group input + input').value = '';
 }
 
 
 function setTaskNumber() {
-  const total = document.querySelectorAll('.listItem').length;
+  const total = document.querySelectorAll('.list-item').length;
   const finished = document.querySelectorAll('.finished').length;
-  document.querySelector('.boardTitle h3').innerText = `${finished} of ${total} tasks`;
+  document.querySelector('.dashboard h3').innerText = `${finished} of ${total} tasks`;
 }
 
 // 新增
 function addTask(task, time) {
   const element = document.createElement('div');
-  element.classList.add('listItem');
-  element.innerHTML = `<div class="checkobx">
+  element.classList.add('list-item');
+  element.innerHTML = `<div class="checkbox">
     <div class="checkbox-img"></div>
   </div>
-  <div class="listItem-content">
-    <div class="taskName">${task}</div>
-    <div class="taskTime">${time}</div>
+  <div class="list-item-content">
+    <div class="task-name">${task}</div>
+    <div class="task-time">${time}</div>
   </div>
-  <div class="btnDelete">
-    <img class="btnDelete-img" src="/cross.png">
+  <div class="btn-delete">
+    <img class="btn-delete-img" src="./cross.png">
   </div>`;
   list.appendChild(element);
   setTaskNumber();
@@ -37,16 +37,16 @@ function addTask(task, time) {
 
 // 完成
 function finishTask(target) {
-  const item = target.closest('.listItem');
+  const item = target.closest('.list-item');
   item.classList.toggle('finished');
-  item.querySelector('.checkobx').classList.toggle('finished-checkbox');
-  item.querySelector('.taskName').classList.toggle('finished-taskName');
+  item.querySelector('.checkbox').classList.toggle('finished-checkbox');
+  item.querySelector('.task-name').classList.toggle('finished-task-name');
   setTaskNumber();
 }
 
 // 刪除
 function deleteTask(target) {
-  const item = target.closest('.listItem');
+  const item = target.closest('.list-item');
   list.removeChild(item);
   setTaskNumber();
 }
@@ -60,20 +60,20 @@ btnAddTask.addEventListener('click', () => {
 
 // 確認新增待辦
 btnConfirm.addEventListener('click', () => {
-  const task = document.querySelector('.inputGroup input').value;
+  const task = document.querySelector('.input-group input').value;
   if (task !== '') {
-    addTask(task, document.querySelector('.inputGroup input + input').value);
+    addTask(task, document.querySelector('.input-group input + input').value);
   }
 });
 
 // 監聽事件點擊
 windows.addEventListener('click', (e) => {
   const eValue = e.target.classList.value;
-  if (eValue.includes('btnDelete')) {
+  if (eValue.includes('btn-delete')) {
     deleteTask(e.target);
   }
 
-  if (eValue.includes('checkbox') || eValue.includes('finished-taskName')) {
+  if (eValue.includes('checkbox') || eValue.includes('finished-task-name')) {
     finishTask(e.target);
   }
 });
