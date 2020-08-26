@@ -3,20 +3,28 @@ const btnAddTask = document.querySelector('.btn-add');
 const btnConfirm = document.querySelector('.btn-confirm');
 const windows = document.querySelector('html');
 
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function toggleBoard() {
-  document.querySelector('.addBoard').classList.toggle('hideBoard');
+  document.querySelector('.add-board').classList.toggle('hide-board');
   document.querySelector('.input-group input').value = '';
   document.querySelector('.input-group input + input').value = '';
 }
 
 
-function setTaskNumber() {
+function setTaskNum() {
   const total = document.querySelectorAll('.list-item').length;
   const finished = document.querySelectorAll('.finished').length;
   document.querySelector('.dashboard h3').innerText = `${finished} of ${total} tasks`;
 }
 
-// 新增
 function addTask(task, time) {
   const element = document.createElement('div');
   element.classList.add('list-item');
@@ -31,48 +39,49 @@ function addTask(task, time) {
     <img class="btn-delete-img" src="./cross.png">
   </div>`;
   list.appendChild(element);
-  setTaskNumber();
+  setTaskNum();
   toggleBoard();
 }
 
-// 完成
 function finishTask(target) {
   const item = target.closest('.list-item');
   item.classList.toggle('finished');
   item.querySelector('.checkbox').classList.toggle('finished-checkbox');
   item.querySelector('.task-name').classList.toggle('finished-task-name');
-  setTaskNumber();
+  setTaskNum();
 }
 
-// 刪除
 function deleteTask(target) {
   const item = target.closest('.list-item');
   list.removeChild(item);
-  setTaskNumber();
+  setTaskNum();
 }
 
-setTaskNumber();
+// update list item num
+setTaskNum();
 
-// 開啟新增頁面
+// to open new board
 btnAddTask.addEventListener('click', () => {
   toggleBoard();
 });
 
-// 確認新增待辦
+// click confirm button
 btnConfirm.addEventListener('click', () => {
-  const task = document.querySelector('.input-group input').value;
+  const task = escapeHtml(document.querySelector('.input-group input').value);
   if (task !== '') {
     addTask(task, document.querySelector('.input-group input + input').value);
   }
 });
 
-// 監聽事件點擊
+// event listener
 windows.addEventListener('click', (e) => {
   const eValue = e.target.classList.value;
+  // click delete buttons
   if (eValue.includes('btn-delete')) {
     deleteTask(e.target);
   }
 
+  // click checkbox
   if (eValue.includes('checkbox') || eValue.includes('finished-task-name')) {
     finishTask(e.target);
   }

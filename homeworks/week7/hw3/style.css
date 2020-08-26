@@ -12,7 +12,7 @@ html {
     background: #f4f5f9;
 }
 
-.dashboard, .addBoard {
+.dashboard, .add-board {
     padding: 20px;
     width: 600px;
     margin: 0 auto;
@@ -25,27 +25,27 @@ html {
     margin-top: 20px;
 }
 
-.dashboard h1, .addBoard h1 {
+.dashboard h1, .add-board h1 {
     font-size: 30px;
     font-weight: bold;
     color: #313131;
 }
 
-.dashboard h3, .addBoard h3 {
+.dashboard h3, .add-board h3 {
     font-size: 15px;
     margin-top: 8px;
     color: #cdcfd4;
     font-weight: bold;
 }
 
-.dashboard h1 > span, .addBoard h1 > span {
+.dashboard h1 > span, .add-board h1 > span {
     font-size: 28px;
     color: #cdcfd4;
     font-weight: normal;
     margin-left: 5px;
 }
 
-.hideBoard {
+.hide-board {
     display: none;
 }
 
@@ -161,7 +161,7 @@ html {
 
 
 @media (max-width: 768px) {
-    .dashboard, .addBoard {
+    .dashboard, .add-board {
         width: 90%;
     }
 }
