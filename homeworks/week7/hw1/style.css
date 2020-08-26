@@ -71,11 +71,9 @@ html {
 
 .form input + p, .form-block div + p {
   margin: 10px 0 0 0;
-  visibility: hidden;
   font-size: 14px;
   color: #E60000;
 }
-
 
 .input {
   border: 0px;
@@ -124,8 +122,6 @@ html {
   font-size: 14px;
   font-weight: bold;
 }
-
-
 
 /* 移除預設樣式 */
 #choice1, #choice2 {
@@ -181,6 +177,10 @@ input:checked + label > span {
   text-align: center;
   background: black;
   color: #999999;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 

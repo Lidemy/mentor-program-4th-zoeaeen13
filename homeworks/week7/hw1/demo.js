@@ -1,59 +1,45 @@
 /* eslint-disable no-alert,  no-unused-vars */
+const requireArr = ['resource', 'phone', 'email', 'nickname'];
 
-// 檢查radio Button
+// check radio button
 function checkRadio() {
   if (document.querySelectorAll('#signup input[type="radio"]:checked').length === 0) {
     document.querySelector('#signup').scrollIntoView();
-    document.querySelector('#signup p').style.visibility = 'visible';
+    document.querySelector('#signup p').classList.remove('hidden');
     return false;
   }
-
-  document.querySelector('#signup p').style.visibility = 'hidden';
+  document.querySelector('#signup p').classList.add('hidden');
   return true;
 }
 
-// 檢查空值
+// check input text
 function checkEmpty(str) {
   if (document.querySelector(`#${str} input`).value === '') {
     document.querySelector(`#${str}`).scrollIntoView();
-    document.querySelector(`#${str} p`).style.visibility = 'visible';
+    document.querySelector(`#${str} p`).classList.remove('hidden');
     return false;
   }
-
-  document.querySelector(`#${str} p`).style.visibility = 'hidden';
+  document.querySelector(`#${str} p`).classList.add('hidden');
   return true;
 }
 
-// 送出按鈕的監聽
-const btnSubmit = document.querySelector('.btn-submit');
-btnSubmit.addEventListener('click', () => {
-  checkEmpty('resource');
-  checkRadio('signup');
-  checkEmpty('phone');
-  checkEmpty('email');
-  checkEmpty('nickname');
-});
-
-// alert提醒確認
-function showResult() {
-  if (!checkEmpty('nickname')) {
-    return false;
-  }
-
-  if (!checkEmpty('email')) {
-    return false;
-  }
-
-  if (!checkEmpty('phone')) {
-    return false;
-  }
-
+// before submit
+document.querySelector('form').addEventListener('submit', (e) => {
+  let isFinished = true;
   if (!checkRadio('signup')) {
-    return false;
+    isFinished = false;
   }
 
-  if (!checkEmpty('resource')) {
-    return false;
+  for (let i = 0; i < requireArr.length; i += 1) {
+    if (!checkEmpty(requireArr[i])) {
+      isFinished = false;
+    }
+  }
+
+  // chekc if every [input] is finished
+  if (!isFinished) {
+    e.preventDefault();
+    return;
   }
 
   alert(`您好，報名資料如下：
@@ -63,22 +49,4 @@ function showResult() {
     活動消息來源： ${document.forms.procrastination.resource.value}
     其他建議： ${document.forms.procrastination.advice.value}
   `);
-
-  return true;
-}
-
-
-// 輸入框失去焦點，檢查空值
-function focusOut(str) {
-  document.querySelector(`#${str} input`).addEventListener('blur', () => {
-    checkEmpty(str);
-  });
-}
-
-focusOut('resource');
-focusOut('phone');
-focusOut('email');
-focusOut('nickname');
-document.querySelector('.radio-group').addEventListener('blur', () => {
-  checkRadio();
 });

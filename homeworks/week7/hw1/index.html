@@ -8,7 +8,7 @@
     <title>Form</title>
 </head>
 <body class="debug">
-  <form class="form" name="procrastination" method="GET" onsubmit="return showResult()">
+  <form class="form" name="procrastination" method="GET">
     <div class="wrapper">
       <h1>新拖延運動報名表單</h1>
       <h3>活動日期：2020/12/10 ~ 2020/12/11</p>
@@ -18,19 +18,19 @@
       <section class="form-block" id="nickname">
         <h4>暱稱</h4>
         <input class="input" name="nickname" type="text" placeholder="您的回答">
-        <p>這是必填問題</p>
+        <p class="hidden">這是必填問題</p>
       </section>
 
         <section class="form-block" id="email">
           <h4>電子郵件</h4>
           <input class="input" name="email" type="email" placeholder="您的電子郵件">
-          <p>這是必填問題</p>
+          <p class="hidden">這是必填問題</p>
         </section>
 
         <section class="form-block" id="phone">
           <h4>手機號碼</h4>
           <input class="input" name="phone" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="您的手機號碼">
-          <p>這是必填問題</p>
+          <p class="hidden">這是必填問題</p>
         </section>
 
         <section class="form-block" id="signup">
@@ -45,13 +45,13 @@
               <label for="choice2"><span></span>趴在地上滑手機找現成的</label>    
             </div>
           </div>
-          <p>這是必填問題</p>
+          <p class="hidden">這是必填問題</p>
         </section>
 
         <section class="form-block" id="resource">
           <h4>怎麼知道這個活動的？</h4>
           <input class="input" name="resource" type="text" placeholder="您的回答">
-          <p>這是必填問題</p>
+          <p class="hidden">這是必填問題</p>
         </section>
 
         <section class="form-block">
