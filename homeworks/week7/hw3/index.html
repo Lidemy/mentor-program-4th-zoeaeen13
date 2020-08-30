@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link rel="stylesheet" href="style.css">
+  <title>TODO List</title>
+</head>
+<body class="debug">
+  <section class="dashboard">
+    <h1>Tasks<span>Lists</span></h1>
+    <h3></h3>
+    <div class="tasklist">
+      <div class="list-item">
+        <div class="checkbox">
+          <div class="checkbox-img"></div>
+        </div>
+        <div class="list-item-content">
+          <div class="task-name">yoga class at 10:00</div>
+          <div class="task-time">2019-08-31</div>
+        </div>
+        <div class="btn-delete">
+          <img class="btn-delete-img" src="./cross.png">
+        </div>
+      </div>
+
+      <div class="list-item finished">
+        <div class="checkbox finished-checkbox">
+          <div class="checkbox-img"></div>
+        </div>
+        <div class="list-item-content">
+          <div class="task-name finished-task-name">prepare lunch</div>
+          <div class="task-time">2020-09-10</div>
+        </div>
+        <div class="btn-delete">
+          <img class="btn-delete-img" src="./cross.png">
+        </div>
+      </div>
+
+      <div class="list-item">
+        <div class="checkbox">
+          <div class="checkbox-img"></div>
+        </div>
+        <div class="list-item-content">
+          <div class="task-name">run 3 miles</div>
+          <div class="task-time">2020-10-17</div>
+        </div>
+        <div class="btn-delete">
+          <img class="btn-delete-img" src="./cross.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="button">
+      <div class="btn-add">
+        <img src="./plus.png">
+      </div>
+    </div>
+  </section>
+
+  <section class="add-board hide-board">
+    <h1>Add<span>Tasks</span></h1>
+    <h3>The to do list to organize work & life</h3>
+    <div class="input-group">
+      <input type="text" placeholder="Task" required=""/>
+      <input type="date"/>
+      <div class="button">
+        <div class="btn-confirm">
+          <img src="./plus.png">
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script type="text/javascript" src="demo.js"></script>
+</html>

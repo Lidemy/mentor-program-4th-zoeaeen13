@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Form</title>
+</head>
+<body class="debug">
+  <form class="form" name="procrastination" method="GET">
+    <div class="wrapper">
+      <h1>新拖延運動報名表單</h1>
+      <h3>活動日期：2020/12/10 ~ 2020/12/11</p>
+      <h3>活動地點：台北市大安區新生南路二段1號</p>
+      <h4>*必填</h4>
+
+      <section class="form-block" id="nickname">
+        <h4>暱稱</h4>
+        <input class="input" name="nickname" type="text" placeholder="您的回答">
+        <p class="hidden">這是必填問題</p>
+      </section>
+
+        <section class="form-block" id="email">
+          <h4>電子郵件</h4>
+          <input class="input" name="email" type="email" placeholder="您的電子郵件">
+          <p class="hidden">這是必填問題</p>
+        </section>
+
+        <section class="form-block" id="phone">
+          <h4>手機號碼</h4>
+          <input class="input" name="phone" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="您的手機號碼">
+          <p class="hidden">這是必填問題</p>
+        </section>
+
+        <section class="form-block" id="signup">
+          <h4>報名類型</h4>
+          <div class="radio-group">
+            <div>
+              <input type="radio" id="choice1" name="choices" data-value="躺在床上用想像力實作">
+              <label for="choice1"><span></span>躺在床上用想像力實作</label>
+            </div>
+            <div>
+              <input type="radio" id="choice2" name="choices" data-value="趴在地上滑手機找現成的">
+              <label for="choice2"><span></span>趴在地上滑手機找現成的</label>    
+            </div>
+          </div>
+          <p class="hidden">這是必填問題</p>
+        </section>
+
+        <section class="form-block" id="resource">
+          <h4>怎麼知道這個活動的？</h4>
+          <input class="input" name="resource" type="text" placeholder="您的回答">
+          <p class="hidden">這是必填問題</p>
+        </section>
+
+        <section class="form-block">
+          <h5 class="others">
+            其他
+            <p>對活動的一些建議</p>
+          </h5>
+          <input class="input" type="text" placeholder="您的回答" name="advice">
+        </section>
+
+        <input class="btn-submit" type="submit" placeholder="提交">
+        <p class="suggestion">請勿透過表單送出您的密碼。</p>
+    </div>
+  </form>
+
+  <footer class="footer">
+    © 2020 © Copyright. All rights Reserved.
+  </footer>
+</body>
+<script type="text/javascript" src="demo.js"></script>
+</html>
