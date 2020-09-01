@@ -1,5 +1,5 @@
 .debug *, .debug {
-  /* outline: solid 1px gold; */
+  outline: solid 1px gold;
   margin: 0;
   padding: 0;
 }
@@ -113,7 +113,6 @@ html {
   padding-top: 55px;
   padding-bottom: 150px;
   width: 100%;
-  min-height: 600px;
   background-image: url(./none.jpg);
   background-size: cover;
 }
@@ -240,6 +239,34 @@ html {
   .footer-top h2, .footer-social-link {
     text-align: left;
   }
+
+  .dashboard {
+    width: 90%;
+  }
+
+  .dashboard h3 {
+    margin-right: 8px;
+  }
+  .dashboard p {
+    word-wrap: break-word;
+    overflow:hidden;
+  }
+
+  .btn-lottery {
+    width: 80%;
+    margin-top: 20px;
+  }
+
+  .resultboard {
+    margin-top: 25vh;
+    text-align: center;
+  }
+  
+  .resultboard h1 {
+    font-size: 25px;
+  }
+
+
 }
 
 /* 手機版面 */
