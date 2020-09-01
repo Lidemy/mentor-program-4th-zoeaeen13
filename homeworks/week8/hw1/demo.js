@@ -5,6 +5,7 @@ const lottery = document.querySelector('.lottery');
 const resultTitle = document.querySelector('.resultboard h1');
 const dashboard = document.querySelector('.dashboard');
 const resultboard = document.querySelector('.resultboard');
+const loading = document.querySelector('.loading');
 
 // hide dashboard
 function hideDashboard() {
@@ -22,7 +23,9 @@ function customView(title, imageLink) {
 }
 
 // manage lucky draw result
-function getResult() {
+function setResult() {
+  loading.classList.toggle('hidden');
+
   if (request.status >= 200 && request.status < 400) {
     const response = request.responseText;
     const prize = JSON.parse(response).prize;
@@ -54,7 +57,7 @@ function getResult() {
 // call API
 function getLuckyDraw() {
   request.open('GET', 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery', true);
-  request.onload = getResult;
+  request.onload = setResult;
   request.onError = () => {
     console.log('error');
   };
@@ -64,6 +67,7 @@ function getLuckyDraw() {
 // click button
 lottery.addEventListener('click', (e) => {
   if (e.target.classList.contains('btn-lottery')) {
+    loading.classList.toggle('hidden');
     getLuckyDraw();
   }
 });
