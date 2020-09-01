@@ -100,8 +100,14 @@ html {
   cursor: pointer;
 }
 
+.streamItem-empty {
+  width: 25%;
+  margin: 0 10px 20px 10px;
+}
+
 .streamItem:hover {
   transform: scale(1.02);
+  filter: brightness(1.2);
 }
 
 .streamItem > img {

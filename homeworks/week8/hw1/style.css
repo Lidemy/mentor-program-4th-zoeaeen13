@@ -188,6 +188,7 @@ html {
 }
 
 .loading {
+  z-index: 3;
   position: fixed;
   top: 50%;
   left: 50%;
