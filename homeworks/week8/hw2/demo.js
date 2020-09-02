@@ -3,6 +3,7 @@
 const requestTopGame = new XMLHttpRequest();
 const requestStreams = new XMLHttpRequest();
 const url = 'https://api.twitch.tv/kraken';
+const clientID = '0n4il3nmibawzxq23hqdbid338v15p';
 const template = `<img src="$banner" onerror="if (this.src != './default.jpg') this.src = './default.jpg';">
 <a href="$url"></a>
 <div class="itemInfo">
@@ -20,6 +21,7 @@ const gameList = document.querySelector('.gameList');
 const btnShowList = document.querySelector('.btn-show-list');
 const btnMore = document.querySelector('.btn-more');
 let recentGame;
+let streamNum = 0;
 
 // add navbar items
 function setNavbar(arr) {
@@ -33,27 +35,28 @@ function setNavbar(arr) {
 
 // add stream item
 function setStreamItem(arr) {
+  streamNum += arr.length;
   for (let i = 0; i < arr.length; i += 1) {
-    const channel = arr[i].channel;
+    const gameData = arr[i];
     const streamItem = document.createElement('div');
     const content = template
-      .replace('$url', channel.url)
-      .replace('$banner', channel.video_banner)
-      .replace('$logo', channel.logo)
-      .replace('$status', channel.status)
-      .replace('$username', channel.name);
+      .replace('$url', gameData.channel.url)
+      .replace('$banner', gameData.preview.medium)
+      .replace('$logo', gameData.channel.logo)
+      .replace('$status', gameData.channel.status)
+      .replace('$username', gameData.channel.name);
     streamItem.classList.add('streamItem');
     streamItem.innerHTML = content;
     gameList.appendChild(streamItem);
   }
 }
 
+// for layout
 function addEmptyItem() {
   const emptyItem = document.createElement('div');
   emptyItem.classList.add('streamItem-empty');
   gameList.appendChild(emptyItem);
 }
-
 function removeEmptyItem() {
   const elements = document.querySelectorAll('.streamItem-empty');
   for (let i = 0; i < elements.length; i += 1) {
@@ -65,6 +68,7 @@ function removeEmptyItem() {
 function updateStreams(gameName) {
   requestStreams.onload = () => {
     if (requestStreams.status >= 200 && requestStreams.status < 400) {
+      removeEmptyItem();
       const response = JSON.parse(requestStreams.responseText);
       const streamList = response.streams;
       setStreamItem(streamList);
@@ -79,10 +83,11 @@ function updateStreams(gameName) {
     console.log('error');
   };
 
-  const offset = gameList.childElementCount;
-  requestStreams.open('GET', `${url}/streams?game=${gameName}&limit=20&offset=${offset}`, true);
+  const game = encodeURIComponent(gameName);
+  const offset = streamNum;
+  requestStreams.open('GET', `${url}/streams?game=${game}&limit=20&offset=${offset}`, true);
   requestStreams.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
-  requestStreams.setRequestHeader('Client-ID', '0n4il3nmibawzxq23hqdbid338v15p');
+  requestStreams.setRequestHeader('Client-ID', clientID);
   requestStreams.send();
 }
 
@@ -120,7 +125,6 @@ btnShowList.addEventListener('click', () => {
 });
 
 btnMore.addEventListener('click', () => {
-  removeEmptyItem();
   updateStreams(recentGame);
 });
 
@@ -128,6 +132,7 @@ body.addEventListener('click', (e) => {
   // navbar
   if (e.target.closest('.navItem')) {
     recentGame = e.target.closest('.navItem').innerText;
+    streamNum = 0;
     gameList.innerHTML = '';
     updateStreams(recentGame);
 

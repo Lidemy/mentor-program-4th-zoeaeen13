@@ -106,18 +106,12 @@ function getOdds() {
 
 }
 ```
-我猜想，應該是非同步這個寫法出了問題，上網尋找資料，使用關鍵字像是「Ajax 多次請求、多筆 API 請求、非同步」等等，原本對非同步請求的理解如下，認為使用異步請求只管發送，處理起來應該比較快
->* **同步請求**
-對 server 送出 request ，在收到伺服器端的 response 後才會繼續下一步的動作，等待期間無法處理其他事情
->* **非同步請求**
-對 server 送出 request 之後，不需要等待結果，仍可以持續處理其他事情。Response 傳回之後，會被更新進入畫面
 
-沒想到怎麼執行迴圈，多筆都只會得到一個結果，沒有像我想像中的 100 個結果，納悶之餘，猜想是不是「進行連續多個請求、且請求的 url 相同時，會放棄前面的所有請求，只執行最後一次請求？」原因還沒完全搞懂，不過資料提示我可以先把它**改成同步請求**：
+沒想到怎麼執行迴圈，多筆都只會得到一個結果，沒有像我想像中的 100 個結果，納悶之餘，猜到是不是使用同一個 XMLHttpRequest 的原因，進行連續多個請求、且請求的 url 相同時，就會放棄前面所有請求，只執行最後一次請求。不過本題目的是求出機率，我就先把它**改成同步請求**，順利印出 100 筆資料，並記錄下來每次跑的結果。
 
 ```javascript=
 request.open('GET', url, false);
 ```
-抱著姑且一試的心態將參數改為 false，果然順利印出 100 筆資料，雖說成功了，不知道為什麼這樣可行，只能先記錄下來每次跑的結果。
 
 ![](https://i.imgur.com/qntq3XZ.png)
 
@@ -160,6 +154,60 @@ function updateStreams(gameName) {  // 輸入遊戲名稱
   );
   requestStreams.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
   requestStreams.setRequestHeader('Client-ID', '0n4il3nmibawzxq23hqdbid338v15p');
+  requestStreams.send();
+}
+```
+
+
+#### 更新：解決畫面跳動的問題
+
+看完老師的檢討影片後，也新增兩個空白卡片讓排版好看，不過卻出現載入新實況時，底部卡片跳動的問題，原因是原先作法我是透過計算 gameList 裡面有多少實況卡片數量來決定偏移量，為了讓正確的實況被載入、會先抽掉兩個空白卡片再去 call API，造成在資料還沒回來時的畫面 BUG。
+
+![](https://i.imgur.com/EFd7c7d.gif)
+
+```javascript=
+// 抽換及加入空白卡片
+function addEmptyItem() {
+  const emptyItem = document.createElement('div');
+  emptyItem.classList.add('streamItem-empty');
+  gameList.appendChild(emptyItem);
+}
+
+function removeEmptyItem() {
+  const elements = document.querySelectorAll('.streamItem-empty');
+  for (let i = 0; i < elements.length; i += 1) {
+    gameList.removeChild(elements[i]);
+  }
+}
+```
+
+我想到的解決方法，就是確定資料回來之後再抽掉卡片，但這樣就要調整 offset 的值，於是另外設一個 `$streamNum` 變數來存，每次設定新的 Item 就存，只有在點擊其它 navItem 才會清零。
+
+```javascript=
+// call API and set streams
+function updateStreams(gameName) {
+  requestStreams.onload = () => {
+    if (requestStreams.status >= 200 && requestStreams.status < 400) {
+      removeEmptyItem();
+      const response = JSON.parse(requestStreams.responseText);
+      setStreamItem(response.streams);
+      addEmptyItem();
+      addEmptyItem();
+    } else {
+      console.log('error');
+    }
+  };
+
+  requestStreams.onError = () => {
+    console.log('error');
+  };
+  
+　//　offset取變數存的值
+  const game = encodeURIComponent(gameName);
+  const offset = streamNum;
+  requestStreams.open('GET', `${url}/streams?game=${game}&limit=20&offset=${offset}`, true);
+  requestStreams.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
+  requestStreams.setRequestHeader('Client-ID', clientID);
   requestStreams.send();
 }
 ```

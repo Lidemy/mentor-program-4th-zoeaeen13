@@ -1,5 +1,5 @@
 .debug *, .debug {
-  outline: solid 1px gold;
+  /* outline: solid 1px gold; */
   margin: 0;
   padding: 0;
 }
@@ -123,7 +123,6 @@ html {
   padding: 40px 0 24px 0;
   box-sizing: border-box;
   width: 500px;
-  height: 580px;
   background: white;
   text-align: center;
 }
@@ -233,6 +232,7 @@ html {
   }
 
   .footer-top .wrapper {
+    align-items: baseline;
     flex-direction: column-reverse;
   }
 
