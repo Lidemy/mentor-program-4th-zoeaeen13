@@ -1,0 +1,278 @@
+.debug *, .debug {
+  /* outline: solid 1px gold; */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: '微軟正黑體';
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 0px 24px;
+  max-width: 1280px;
+  text-align: center;
+}
+
+
+.navbar {
+  height: 84px;
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0px 96px;
+  height: 100%;
+}
+
+.nav-site-name {
+  font-size: 36px;
+  font-weight: normal;
+  color: #489846;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  list-style: none;
+}
+
+.nav-list a {
+  display: block;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 14px 25px;
+  background: white;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  color: #010101;
+  transition: all .2s ease-in;
+}
+
+.nav-active a, .nav-list a:hover {
+  background: #ff7286;
+  color: white;
+}
+
+.nav-list li + li {
+  margin-left: 30px;
+}
+
+.footer-bottom {
+  display: block;
+  margin: 0 auto;
+  padding: 0px 16px;
+  height: 48px;
+  background: #35564b;
+  font-size: 16px;
+  text-align: center;
+  line-height: 48px;
+  color: white;
+}
+
+.footer-top {
+  background: #e8efee;
+}
+
+.footer-top .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 16px;
+}
+
+.footer-info p, .footer-info {
+  line-height: 2em;
+  font-size: #484848;
+  text-align: left;
+  color: #484848;
+}
+
+.footer-top h2  {
+  font-size: 30px;
+  text-align: right;
+  color: #489846;
+}
+
+.footer-social-link {
+  text-align: right;
+}
+
+.lottery {
+  padding-top: 55px;
+  padding-bottom: 150px;
+  width: 100%;
+  background-image: url(./none.jpg);
+  background-size: cover;
+}
+
+.dashboard {
+  margin: 0 auto;
+  border-radius: 16px;
+  padding: 40px 0 24px 0;
+  box-sizing: border-box;
+  width: 500px;
+  background: white;
+  text-align: center;
+}
+
+.lottery-title {
+  font-size: 24px;
+  color: #5ec1b6;
+}
+
+.dashboard > div {
+  display: flex;
+  margin: 44px 60px 0 24px;
+}
+
+.dashboard h3 {
+  margin-right: 20px;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: bold;
+  color: #322929;
+}
+
+.dashboard p {
+  font-size: 16px;
+  text-align: left;
+  color: #322929;
+}
+
+.btn-lottery {
+  margin-top: 58px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  width: 400px;
+  height: 55px;
+  background: #e62a45;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all .2s ease-in;
+}
+
+.btn-lottery:hover {
+  transform: scale(1.02);
+}
+
+.resultboard {
+  margin-top: 180px;
+  text-align: center;
+}
+
+.resultboard h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #292222;
+}
+
+.hidden {
+  display: none;
+}
+
+.loading {
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+}
+
+.loading img {
+  width: 100%;
+  height: 100%;
+}
+
+
+@media(max-width: 768px) {
+  .navbar {
+    height: 100px;
+  }
+  .navbar .wrapper {
+    flex-direction: column;
+    justify-content: center; 
+    padding: 0px 0px;
+  }
+
+  .nav-list {
+    display: flex;
+    margin-top: 12px;
+  }
+
+  .nav-list a {
+    padding: 10px 18px;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .nav-list li + li {
+    margin-left: 20px;
+  }
+
+  .footer-bottom {
+    height: 100%;
+  }
+
+  .footer-top .wrapper {
+    align-items: baseline;
+    flex-direction: column-reverse;
+  }
+
+  .footer-top h2, .footer-social-link {
+    text-align: left;
+  }
+
+  .dashboard {
+    width: 90%;
+  }
+
+  .dashboard h3 {
+    margin-right: 8px;
+  }
+  .dashboard p {
+    word-wrap: break-word;
+    overflow:hidden;
+  }
+
+  .btn-lottery {
+    width: 80%;
+    margin-top: 20px;
+  }
+
+  .resultboard {
+    margin-top: 25vh;
+    text-align: center;
+  }
+  
+  .resultboard h1 {
+    font-size: 25px;
+  }
+
+
+}
+
+/* 手機版面 */
+@media(max-width: 480px) {
+  .nav-list a {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}

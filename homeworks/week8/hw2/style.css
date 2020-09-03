@@ -1,0 +1,196 @@
+.debug *, .debug {
+  /* outline: solid 1px gold; */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: '微軟正黑體';
+  scroll-behavior: smooth;
+}
+
+.banner {
+  display: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url(./banner.jpg);
+  background-size: cover;
+  text-align: center;
+}
+
+.banner > div {
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  transform: translate(-50%, -50%);
+}
+
+.banner h1 {
+  margin-bottom: 15px;
+  color: white;
+  font-family: fantasy;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.banner p {
+  color: white;
+  font-size: 20px;
+}
+
+.banner p + div {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+}
+
+.banner img {
+  margin-top: 20px;
+  width: 100%;
+  transition: all ease-in .3s;
+  cursor: pointer;
+}
+
+.banner img:hover {
+  transform: scale(1.12);
+}
+
+.gameList {
+  background: #03121F;
+  padding: 30px 60px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.navbar {
+  background: #03121F;
+  text-align: center;
+}
+
+.navItem {
+  display: inline-block;
+  color: white;
+  border: 1px solid #525252;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: all ease-in .3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.navItem:hover, .select {
+  background: #525252;
+}
+
+.navbar div + div {
+  margin-left: 10px;
+}
+
+.streamItem {
+  border-radius: 3px;
+  width: 25%;
+  background-size: cover;
+  box-sizing: border-box;
+  margin: 0 10px 20px 10px;
+  background: #414141;
+  border: solid 2px #414141;
+  transition: all ease-in .2s;
+  cursor: pointer;
+}
+
+.streamItem-empty {
+  width: 25%;
+  margin: 0 10px 20px 10px;
+}
+
+.streamItem:hover {
+  transform: scale(1.02);
+  filter: brightness(1.2);
+}
+
+.streamItem > img {
+  width: 100%;
+}
+
+.itemInfo {
+  display: flex;
+  width: 95%;
+  padding: 5px;
+}
+
+.itemDetail {
+  padding-left: 5px;
+  padding-bottom: 5px;
+  overflow: hidden;
+}
+
+.itemAvator img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.streamItem h3, .streamItem p {
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.streamItem h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.streamItem p {
+  font-size: 14px;
+}
+
+body > div {
+  background: #03121F;
+  text-align: center;
+}
+
+.btn-more {
+  border: none;
+  margin: 20px;
+  padding: .5vw 5vh;
+  border-radius: 20px;
+  background: #eec60a;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2d2d2d;
+  cursor: pointer;
+  transition: all ease-in .3s;
+}
+
+.btn-more:hover {
+  background: #FFD800;
+  transform: scale(1.1);
+}
+
+.btn-more:focus {
+  outline: none;
+}
+
+@media(max-width: 768px) {
+  .streamItem {
+    width: 45%;
+  }
+
+  .gameList {
+    padding: 10px 40px;
+  }
+
+  .navItem {
+    margin: 10px 0;
+  }
+}
+
+@media(max-width: 480px) {
+  .streamItem {
+    width: 100%;
+  }
+}
