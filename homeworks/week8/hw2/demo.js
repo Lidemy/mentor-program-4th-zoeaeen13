@@ -52,10 +52,12 @@ function setStreamItem(arr) {
 }
 
 // for layout
-function addEmptyItem() {
-  const emptyItem = document.createElement('div');
-  emptyItem.classList.add('streamItem-empty');
-  gameList.appendChild(emptyItem);
+function addEmptyItem(num) {
+  for (let i = 0; i < num; i += 1) {
+    const emptyItem = document.createElement('div');
+    emptyItem.classList.add('streamItem-empty');
+    gameList.appendChild(emptyItem);
+  }
 }
 function removeEmptyItem() {
   const elements = document.querySelectorAll('.streamItem-empty');
@@ -72,8 +74,7 @@ function updateStreams(gameName) {
       const response = JSON.parse(requestStreams.responseText);
       const streamList = response.streams;
       setStreamItem(streamList);
-      addEmptyItem();
-      addEmptyItem();
+      addEmptyItem(2);
     } else {
       console.log('error');
     }

@@ -69,7 +69,7 @@ lottery.addEventListener('click', (e) => {
           customView('恭喜你中頭獎了！日本東京來回雙人遊！', './first.jpg');
           break;
         case 'SECOND':
-          customView('獎！90 吋電視一台！', './second.jpg');
+          customView('二獎！90 吋電視一台！', './second.jpg');
           break;
         case 'THIRD':
           customView('恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！', './third.jpg');
