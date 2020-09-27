@@ -1,0 +1,273 @@
+.debug *, .debug {
+  /* outline: solid 1px gold; */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: '微軟正黑體';
+  scroll-behavior: smooth;
+  background: #F7F7F7;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  margin: 10vh auto;
+  background: transparent;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.dashboard section {
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.section_content {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 30vw;
+  background: white;
+}
+
+.section_intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: 25vw;
+  background: #a39391;
+}
+
+.dashboard h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.dashboard h5 {
+  margin: 10px 0 40px 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: #626262;
+}
+
+.dashboard input {
+  display: block;
+  margin: 10px auto;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  width: 70%;
+  background: #f2f4f6;
+  font-size: 12px;
+  letter-spacing: .12em;
+}
+
+.dashboard input:focus {
+  outline: none;
+}
+
+.dashboard button, .dashboard a {
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  transition: ease-in all .2s;
+}
+
+.dashboard button:focus {
+  outline: none;
+}
+
+.section_intro a {
+  border: .5px solid white;
+  background: transparent;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.section_content button {
+  background: #a39391;
+}
+
+.dashboard button:hover, .dashboard a:hover {
+  background: #716e77;
+}
+
+
+/* edit dashboard */
+.post_buttons {
+  position: fixed;
+  top: 10px;
+  right: 40px;
+
+}
+
+.btn_update_post, .post_buttons a {
+  margin: 20px 10px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  background: #03A87C;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.post_buttons a {
+  background: #eb5252;
+}
+
+.btn_update_post:hover, .post_buttons a:hover {
+  filter: brightness(1.05);
+}
+
+.btn_update_post {
+  outline: none;
+}
+
+.edit_dashboard {
+  margin: 6vh auto;
+  border: none;
+  overflow: hidden;
+  border-radius: 2px;
+  box-sizing: border-box;
+  width: 60%;
+  background: white;
+}
+
+
+.title, #cke_content {
+  display: block;
+  margin: 20px auto;
+  box-sizing: border-box;
+  border: none;
+  padding: 5px;
+  color: #292929;
+  width: 80%;
+}
+
+#cke_content {
+  border: 1.5px solid #F8F8F8;
+}
+
+
+::placeholder {
+  color: #B3B3B1;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+#content {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.container_cover {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 40%;
+}
+
+
+.btn_choose_cover {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  box-sizing: border-box;
+  border: 1.5px solid #CCCCCC;
+  border-radius: 5px;
+  padding: 4px 6px;
+  font-size: 13px;
+  color: white;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.btn_choose_cover:hover {
+  background: #CCCCCC;
+}
+
+.title:focus, .title:hover, #content:focus, #content:hover {
+  outline: none;
+}
+
+.container_category {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.container_category label {
+  margin: 4px;
+  padding: 3px 4px;
+  border: 1.5px solid transparent;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  flex-wrap: nowrap;
+  background: #fcebb6;
+  color: #313131;
+}
+
+.container_category label:hover {
+  border-color: #F7B32D;
+}
+
+.container_category input:checked + label {
+  background: #F7B32D;
+  color: white;
+}
+
+.container_category input {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+    margin: 10vh auto;
+  }
+
+  .dashboard section {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .section_content {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 0px;  
+  }
+  
+  .section_intro {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+  }
+
+  /* edit dashboard */
+
+}
