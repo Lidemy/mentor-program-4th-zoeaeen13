@@ -90,94 +90,98 @@
       die ($conn->errno);
     }
     $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
-    ?>
-    <article class="article">
-      <a href="article.php?id=<?php echo $row['id']?>"></a>
-      <div class="article_banner" style="background: url(./images/cover.jpg); background-size: cover;">
-        <?php if (setCategory($row['category'])) {?>
-          <a class="article_type type_position" href="index.php?category=<?php echo $row['category']?>"><?php echo setCategory($row['category'])?></a>
-        <?php }?>
-      </div>
-      <h3 class="article_title"><?php echo htmlspecialchars($row['title'])?></h3>
-      <h5><?php echo substr($row["created_at"], 0, 10) ?></h5>
-      <h6><?php echo strip_tags($row['content'])?></h6>
-    </article>
-    <?php }?>
-    <div class="article_blank"></div>
-    <section class="pagination">
-    <?php
-    // set page sql
-    if ($category) {
-      $page_sql = 'SELECT count(id) as num FROM zoeaeen13_blog_article AS B ' . 
-      'WHERE B.is_deleted IS NULL AND B.category = ?';
-      $page_stmt = $conn->prepare($page_sql);  
-      $page_stmt->bind_param("s", $category);
+    $row = $result->fetch_assoc();
+    if (empty($row)) {
+      echo '<h4>' . 'Sorry the page you are looking for doesnt exists!' . '</h4>';
     } else {
-      $page_sql = 'SELECT count(id) as num FROM zoeaeen13_blog_article AS B WHERE B.is_deleted IS NULL';
-      $page_stmt = $conn->prepare($page_sql);  
-    }
-
-    // get result
-    $page_result = $page_stmt->execute();
-    if (!$page_result) {
-      die ($conn->errno);
-    }
-    $page_result = $page_stmt->get_result();
-    $page_row = $page_result->fetch_assoc();
-    $num = (int)$page_row["num"];
-    $total_pages = ceil($num/$limit);
-    $i = 1;
-
-    if ($category) {
-      // 上一頁
-      if ($page <= 1) { ?>
-        <a class="pagination_link hide_in_phone" href="index.php?category=<?php echo $category ?>"><img src="images/left-arrow.png">Prev</a>
-      <?php } else {?>
-        <a class="pagination_link hide_in_phone" href="index.php?category=<?php echo $category ?>&page=<?php echo $page-1?>"><img src="images/left-arrow.png">Prev</a>
-      <?php }
-
-      // 頁碼
-      while ($i <= $total_pages) {
-        if ($i === $page) { ?>
-        <a class="page_item page_select" href="index.php?category=<?php echo $category ?>&page=<?php echo $i?>"><?php echo $i?></a>
-      <?php } else { ?>
-        <a class="page_item" href="index.php?category=<?php echo $category ?>&page=<?php echo $i?>"><?php echo $i?></a>
-      <?php }
-        $i += 1;
+      while ($row = $result->fetch_assoc()) { ?>
+      <article class="article">
+        <a href="article.php?id=<?php echo $row['id']?>"></a>
+        <div class="article_banner" style="background: url(./images/cover.jpg); background-size: cover;">
+          <?php if (setCategory($row['category'])) {?>
+            <a class="article_type type_position" href="index.php?category=<?php echo $row['category']?>"><?php echo setCategory($row['category'])?></a>
+          <?php }?>
+        </div>
+        <h3 class="article_title"><?php echo htmlspecialchars($row['title'])?></h3>
+        <h5><?php echo substr($row["created_at"], 0, 10) ?></h5>
+        <h6><?php echo strip_tags($row['content'])?></h6>
+      </article>
+      <?php }?>
+      <div class="article_blank"></div>
+      <section class="pagination">
+      <?php
+      // set page sql
+      if ($category) {
+        $page_sql = 'SELECT count(id) as num FROM zoeaeen13_blog_article AS B ' . 
+        'WHERE B.is_deleted IS NULL AND B.category = ?';
+        $page_stmt = $conn->prepare($page_sql);  
+        $page_stmt->bind_param("s", $category);
+      } else {
+        $page_sql = 'SELECT count(id) as num FROM zoeaeen13_blog_article AS B WHERE B.is_deleted IS NULL';
+        $page_stmt = $conn->prepare($page_sql);
       }
 
-      // 下一頁
-      if ($page < $total_pages) { ?>
-        <a class="pagination_link hide_in_phone" href="index.php?category=<?php echo $category ?>&page=<?php echo $page+1?>"><img src="images/right-arrow.png">Next</a>
-      <?php } else { ?>
-        <a class="pagination_link hide_in_phone" href="index.php?category=<?php echo $category ?>&page=<?php echo $total_pages?>"><img src="images/right-arrow.png">Next</a>
-      <?php }
-    } else {
-      // 上一頁
-      if ($page <= 1) { ?>
-      <a class="pagination_link hide_in_phone" href="index.php"><img src="images/left-arrow.png">Prev</a>
-      <?php } else {?>
-      <a class="pagination_link hide_in_phone" href="index.php?page=<?php echo $page-1?>"><img src="images/left-arrow.png">Prev</a>
-      <?php }?>
+      // get result
+      $page_result = $page_stmt->execute();
+      if (!$page_result) {
+        die ($conn->errno);
+      }
+      $page_result = $page_stmt->get_result();
+      $page_row = $page_result->fetch_assoc();
+      $num = (int)$page_row["num"];
+      $total_pages = ceil($num/$limit);
+      $i = 1;
 
-      <!-- 頁碼 -->
-      <?php while ($i <= $total_pages) {
-        if ($i === $page) { ?>
-        <a class="page_item page_select" href="index.php?page=<?php echo $i?>"><?php echo $i?></a>
-      <?php } else { ?>
-        <a class="page_item" href="index.php?page=<?php echo $i?>"><?php echo $i?></a>
-      <?php }
-        $i += 1;
-      } ?>
+      if ($category) {
+        // 上一頁
+        if ($page <= 1) { ?>
+          <a class="pagination_link hide_in_phone" href="index.php?category=<?php echo htmlspecialchars($category) ?>"><img src="images/left-arrow.png">Prev</a>
+        <?php } else {?>
+          <a class="pagination_link hide_in_phone" href="index.php?category=<?php echo htmlspecialchars($category) ?>&page=<?php echo $page-1?>"><img src="images/left-arrow.png">Prev</a>
+        <?php }
 
-      <!-- 下一頁 -->
-      <?php if ($page < $total_pages) {?>
-        <a class="pagination_link hide_in_phone" href="index.php?page=<?php echo $page+1?>"><img src="images/right-arrow.png">Next</a>
-      <?php } else {?>
-        <a class="pagination_link hide_in_phone" href="index.php?page=<?php echo $total_pages?>"><img src="images/right-arrow.png">Next</a>
-      <?php }
-    } ?>
+        // 頁碼
+        while ($i <= $total_pages) {
+          if ($i === $page) { ?>
+          <a class="page_item page_select" href="index.php?category=<?php echo htmlspecialchars($category) ?>&page=<?php echo $i?>"><?php echo $i?></a>
+        <?php } else { ?>
+          <a class="page_item" href="index.php?category=<?php echo htmlspecialchars($category) ?>&page=<?php echo $i?>"><?php echo $i?></a>
+        <?php }
+          $i += 1;
+        }
+
+        // 下一頁
+        if ($page < $total_pages) { ?>
+          <a class="pagination_link hide_in_phone" href="index.php?category=<?php echo htmlspecialchars($category) ?>&page=<?php echo $page+1?>"><img src="images/right-arrow.png">Next</a>
+        <?php } else { ?>
+          <a class="pagination_link hide_in_phone" href="index.php?category=<?php echo htmlspecialchars($category) ?>&page=<?php echo $total_pages?>"><img src="images/right-arrow.png">Next</a>
+        <?php }
+      } else {
+        // 上一頁
+        if ($page <= 1) { ?>
+        <a class="pagination_link hide_in_phone" href="index.php"><img src="images/left-arrow.png">Prev</a>
+        <?php } else {?>
+        <a class="pagination_link hide_in_phone" href="index.php?page=<?php echo $page-1?>"><img src="images/left-arrow.png">Prev</a>
+        <?php }?>
+
+        <!-- 頁碼 -->
+        <?php while ($i <= $total_pages) {
+          if ($i === $page) { ?>
+          <a class="page_item page_select" href="index.php?page=<?php echo $i?>"><?php echo $i?></a>
+        <?php } else { ?>
+          <a class="page_item" href="index.php?page=<?php echo $i?>"><?php echo $i?></a>
+        <?php }
+          $i += 1;
+        } ?>
+
+        <!-- 下一頁 -->
+        <?php if ($page < $total_pages) {?>
+          <a class="pagination_link hide_in_phone" href="index.php?page=<?php echo $page+1?>"><img src="images/right-arrow.png">Next</a>
+        <?php } else {?>
+          <a class="pagination_link hide_in_phone" href="index.php?page=<?php echo $total_pages?>"><img src="images/right-arrow.png">Next</a>
+        <?php }
+      } 
+    }?>
 
   </section>
   </section>
