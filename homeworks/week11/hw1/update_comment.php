@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('./utills.php');
 require_once('./conn.php');
 
 if (empty($_SESSION['username'])) {
@@ -8,7 +9,7 @@ if (empty($_SESSION['username'])) {
 }
 
 $id = $_GET['id'];
-$sql = 'SELECT * FROM zoeaeen13_comments WHERE id = ?';
+$sql = 'SELECT * FROM zoeaeen13_comments WHERE id = ? AND is_deleted IS NULL';
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $id);
 $result = $stmt->execute();
@@ -17,6 +18,10 @@ if (!$result) {
 }
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
+if (empty($row)) {
+  header("Location: index.php?errCode=5");
+  die('留言不存在');
+}
 ?>
 
 <!DOCTYPE html>

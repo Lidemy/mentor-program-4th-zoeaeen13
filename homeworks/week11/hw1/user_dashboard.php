@@ -19,6 +19,7 @@ if ($user_info) {
   $role = $user_info['role'];
   if ($role !== 'admin') {
     header('Location: index.php?errCode=3');
+    die('只有管理員有權限');
   }
 }
 

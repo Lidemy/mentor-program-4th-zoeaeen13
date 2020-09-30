@@ -68,6 +68,8 @@ if (!empty($_SESSION['username'])) {
           $msg = '只有管理員有權限';
         } else if ($code === '4') {
           $msg = '帳戶被停權發言';
+        } else if ($code === '5') {
+          $msg = '留言不存在';
         }
         echo '<h2>' . $msg . '<h2>';
       }
