@@ -1,0 +1,144 @@
+.debug *, .debug {
+  /* outline: solid 1px gold; */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: '微軟正黑體';
+  scroll-behavior: smooth;
+  background: #F7F7F7;
+}
+
+header {
+  background: #FFC5C7;
+  text-align: center;
+  font-size: 14px;
+  line-height: 28px;
+  font-weight: bold;
+  color: #9D0E16;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  margin: 10vh auto;
+  background: transparent;
+  text-align: center;
+}
+
+.section_content h2 {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.dashboard section {
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.section_content {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 30vw;
+  background: white;
+}
+
+.section_intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: 25vw;
+  background: #2A69D4;
+}
+
+.dashboard h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.dashboard h5 {
+  margin: 10px 0 40px 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: #626262;
+}
+
+.dashboard input {
+  display: block;
+  margin: 10px auto;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  width: 70%;
+  background: #f2f4f6;
+  font-size: 12px;
+  letter-spacing: .12em;
+}
+
+.dashboard input:focus {
+  outline: none;
+}
+
+.dashboard button, .dashboard a {
+  margin: 10px;
+  border: none;
+  border-radius: 35px;
+  padding: 10px 35px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  transition: ease-in all .2s;
+}
+
+.dashboard button:focus {
+  outline: none;
+}
+
+.section_intro a {
+  border: .5px solid white;
+  background: transparent;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.section_content button {
+  background: #2A69D4;
+}
+
+.dashboard button:hover, .dashboard a:hover {
+  background: cornflowerblue;
+}
+
+
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+    margin: 10vh auto;
+  }
+
+  .dashboard section {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .section_content {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 0px;  
+  }
+  
+  .section_intro {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+  }
+
+}
