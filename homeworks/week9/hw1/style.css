@@ -1,0 +1,232 @@
+.debug *, .debug {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: '微軟正黑體';
+  scroll-behavior: smooth;
+  background: #F7F7F7;
+}
+
+header {
+  background: #FFC5C7;
+  text-align: center;
+  font-size: 14px;
+  line-height: 28px;
+  font-weight: bold;
+  color: #9D0E16;
+}
+
+.dashboard, .discussions {
+  padding: 5vw;
+  text-align: center;
+}
+
+.discussions {
+  margin-top: 10vw;
+}
+
+.user_buttons {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.user_buttons a {
+  border-radius: 3px;
+  padding: 5px 15px;
+  background: white;
+  font-size: 12px;
+  font-weight: bold;
+  color: #414141;
+  text-decoration: none;
+  transition: ease-in all .2s;
+}
+
+.user_buttons a:hover {
+  background: #525252;
+  color: white;
+}
+
+.main h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.main h2 {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.main h5 {
+  margin: 10px 0 40px 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: #626262;
+}
+
+.main h3 {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #8B8B8B;
+}
+
+.main input, .main textarea {
+  margin-bottom: 20px;
+  width: 80vw;
+  padding: 5px;
+  background: #F2F2F2;
+  border: solid 1px #E9E9E9;
+  border-radius: 5px;
+}
+
+.main input:focus, .main textarea:focus {
+  outline: none;
+}
+
+.btn_clear, .btn_submit {
+  display: inline-block;
+  border: none;
+  width: 40vw;
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: ease-in .3s all;
+}
+
+.btn_submit:hover {
+  transform: scale(1.03);
+}
+
+.btn_clear {
+  margin-right: 10px;
+  color: #333333;
+  background: #CFD0DA;
+}
+
+.btn_submit {
+  color: white;
+  background: #2A69D4;
+}
+
+.btn_submit:focus {
+  outline: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: white;
+  box-shadow: 3px 3px 5px 5px #f2f4f6;
+  cursor: pointer;
+  transition: ease-in all .3s;
+}
+
+.item:hover {
+  transform: scale(1.01);
+}
+
+.item_contents {
+  margin: 12px 0;
+}
+
+.item_contents h6 {
+  color: #a2a9af;
+  margin-bottom: 5px;
+}
+
+.item_contents p {
+  margin: 4px;
+  font-size: 14px;
+  line-height: 1.2em;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.item_users div {
+  margin: 5px auto;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.item_users h5 {
+  text-align: center;
+}
+
+.btn_up {
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
+  width: 30px;
+  height: 30px;
+  transition: ease-in all 0.2s;
+  cursor: pointer;
+}
+
+.btn_up:hover {
+  transform: scale(1.05);
+}
+
+.btn_up img {
+  width: 100%;
+}
+
+@media all and (min-width: 768px) {
+  .main, .discussions {
+    margin: 0 auto;
+    width: 40vw;
+  }
+
+  .input_section {
+    width: 35vw;
+    margin: 0 auto;
+  }
+
+  .input_section h3 {
+    text-align: left;
+  }
+
+  .input_section input, .input_section textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .btn_clear, .btn_submit {
+    width: 16vw;
+  }
+
+  .dashboard {
+    display: flex;
+  }
+
+  .discussions {
+    margin: 0;
+    padding: 0;
+  }
+
+  .item {
+    margin-bottom: 20px;
+  }
+
+  .btn_up {
+    right: 1%;
+  }
+
+  .user_buttons {
+    position: absolute;
+    top: 10%;
+    right: 5%;  
+  }
+}
