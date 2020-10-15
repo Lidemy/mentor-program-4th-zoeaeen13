@@ -1,5 +1,6 @@
-/* eslint-disable no-alert, object-shorthand, no-undef */
-
+/* eslint-disable no-alert, object-shorthand, no-undef, prefer-destructuring */
+let type = 'all';
+let myToken;
 const todoUrl = 'handle_todolist.php';
 
 function escapeHtml(unsafe) {
@@ -75,7 +76,15 @@ function addNewTodo() {
   }
 }
 
-function setMode(type) {
+function setMode(mode) {
+  // default
+  if ($('input[name=options]:checked')[0]) {
+    type = $('input[name=options]:checked')[0].id;
+  }
+
+  if (mode) {
+    type = mode;
+  }
   switch (type) {
     case 'all':
       $('.todo_item').removeClass('hidden');
@@ -108,10 +117,13 @@ function getTodos(tokenName) {
       return;
     }
     const todolist = resp.todolist[0];
+    const mode = todolist.type;
     const content = JSON.parse(todolist.content);
     for (let i = 0; i < content.length; i += 1) {
       addItem(content[i]);
     }
+    setMode(mode);
+    $(`#${mode}`).parents('.btn-secondary').addClass('active');
   });
 }
 
@@ -123,7 +135,7 @@ function saveTodos(token, content) {
     data: {
       token: token,
       content: content,
-      type: $('input[name=options]:checked')[0].id,
+      type: $('input[name=options]:checked')[0] ? $('input[name=options]:checked')[0].id : type,
     },
     success: (resp) => {
       if (!resp.ok) {
@@ -131,7 +143,7 @@ function saveTodos(token, content) {
         return;
       }
       window.localStorage.setItem('token', token);
-      alert('儲存成功');
+      alert(`儲存成功！您的 token 代碼是 ${token}`);
     },
     error: () => {
       alert('error!');
@@ -139,30 +151,42 @@ function saveTodos(token, content) {
   });
 }
 
+function initSetting() {
+  const urlParams = new URLSearchParams(window.location.search);
 
-$('document').ready(() => {
-  // init
-  let myToken;
+  // local storage
   if (window.localStorage.getItem('token')) {
     myToken = window.localStorage.getItem('token');
     getTodos(myToken);
-  } else {
-    myToken = getRandomToken();
+    return;
+  }
+  // query params
+  if (urlParams.has('token')) {
+    myToken = urlParams.get('token');
+    getTodos(myToken);
+    return;
   }
 
+  myToken = getRandomToken();
+}
+
+
+$('document').ready(() => {
+  // init
+  initSetting();
+
   // 按鈕新增
-  $('.btn-light').on('click', (e) => {
+  $('.btn-light').click((e) => {
     e.preventDefault();
     addNewTodo();
-    setMode($('input[name=options]:checked')[0].id);
+    setMode();
   });
 
   // enter 新增
-  $('.form_items input').on('keypress', (e) => {
-    e.preventDefault();
+  $('.form_items input').keydown((e) => {
     if (e.which === 13) {
       addNewTodo();
-      setMode($('input[name=options]:checked')[0].id);
+      setMode();
     }
   });
 
@@ -171,7 +195,7 @@ $('document').ready(() => {
     const item = $(e.target).parents('.todo_item');
     item.find('.img_icon_check').attr('src', './images/check.png');
     checkItem(item);
-    setMode($('input[name=options]:checked')[0].id);
+    setMode();
   });
 
   // 刪除
@@ -183,15 +207,13 @@ $('document').ready(() => {
   });
 
   // 清空
-  $('.btn-danger').on('click', (e) => {
-    e.preventDefault();
-    $('.section_todos').html('');
+  $('.btn-danger').click(() => {
+    $('.todo_item.checked').remove();
   });
 
 
   // 存到 Server
-  $('.btn-primary').on('click', (e) => {
-    e.preventDefault();
+  $('.btn-primary').click(() => {
     const myTodolist = [];
     $('.todo_item').each((i, el) => {
       myTodolist.push({
@@ -203,13 +225,13 @@ $('document').ready(() => {
   });
 
   // 選擇狀態
-  $('#all').on('click', () => {
-    setMode($('input[name=options]:checked')[0].id);
+  $('#all').click(() => {
+    setMode();
   });
-  $('#completed').on('click', () => {
-    setMode($('input[name=options]:checked')[0].id);
+  $('#completed').click(() => {
+    setMode();
   });
-  $('#incomplete').on('click', () => {
-    setMode($('input[name=options]:checked')[0].id);
+  $('#incomplete').click(() => {
+    setMode();
   });
 });

@@ -122,5 +122,5 @@ function handlePOSTRequest() {
 
   $response = json_encode($json);
   echo $response;
-  }
+}
 ?>
