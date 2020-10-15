@@ -1,4 +1,4 @@
-/* eslint-disable no-alert, object-shorthand, no-undef, prefer-destructuring */
+/* eslint-disable no-alert, object-shorthand, no-undef,  prefer-destructuring */
 let type = 'all';
 let myToken;
 const todoUrl = 'handle_todolist.php';
