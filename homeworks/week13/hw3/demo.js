@@ -63,28 +63,24 @@ function removeEmptyItem() {
     gameList.removeChild(elements[i]);
   }
 }
+function manageUpdateItems(streams) {
+  removeEmptyItem();
+  setStreamItem(streams);
+  addEmptyItem(2);
+}
 
 // call API and set streams
 function updateStreams(gameName) {
   const game = encodeURIComponent(gameName);
   const offset = streamNum;
-  fetch(`${url}/streams?game=${game}&limit=20&offset=${offset}`, {
+  return fetch(`${url}/streams?game=${game}&limit=20&offset=${offset}`, {
     method: 'GET',
     headers: {
       'Client-ID': clientID,
       Accept: 'application/vnd.twitchtv.v5+json',
     },
     mode: 'cors',
-  }).then((response) => {
-    return response.json();
-  }).then((responseData) => {
-    removeEmptyItem();
-    const streamList = responseData.streams;
-    setStreamItem(streamList);
-    addEmptyItem(2);
-  }).catch((err) => {
-    console.log(err);
-  });
+  }).then(res => res.json());
 }
 
 // show top 5 games
@@ -105,7 +101,9 @@ function getTopGame() {
     // select the first item
     document.querySelector('.navItem').classList.add('select');
     recentGame = document.querySelector('.navItem').innerText;
-    updateStreams(recentGame);
+    updateStreams(recentGame).then((data) => {
+      manageUpdateItems(data.streams);
+    });
   }).catch((err) => {
     console.log(err);
   });
@@ -119,7 +117,9 @@ btnShowList.addEventListener('click', () => {
 });
 
 btnMore.addEventListener('click', () => {
-  updateStreams(recentGame);
+  updateStreams(recentGame).then((data) => {
+    manageUpdateItems(data.streams);
+  });
 });
 
 body.addEventListener('click', (e) => {
@@ -128,7 +128,9 @@ body.addEventListener('click', (e) => {
     recentGame = e.target.closest('.navItem').innerText;
     streamNum = 0;
     gameList.innerHTML = '';
-    updateStreams(recentGame);
+    updateStreams(recentGame).then((data) => {
+      manageUpdateItems(data.streams);
+    });
 
     // update the recent navbar
     const navItems = document.querySelectorAll('.navItem');
