@@ -1,0 +1,36 @@
+@mixin displayItems($position) {
+  display: flex;
+  justify-content: $position;
+  align-items: center;
+}
+
+@mixin setSquare($width) {
+  width: $width;
+  height: $width;
+}
+
+@mixin setImage($url) {
+  background: url($url) no-repeat;
+  background-size: contain;
+}
+
+@mixin absCenter() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin limitText($line) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin userButton($color) {
+  background: $color;
+  color: white;
+  border: none;
+}
