@@ -142,9 +142,7 @@ REST，全名 Representational State Transfer（具象狀態傳輸）是一種�
 
 Api Buleprint 是一種利用 markdown，主要用在產出 Api 文件。參考下圖，可以很清楚看到使用 Api Buleprint 撰寫的文件，敘述請求動作、範例、攜帶的 Headers 及回傳資料格式，讓前端可以一目了然。
 
-- Base URL：https://zoeaeen13.github.io/
-
-- API 文件連結：[美食家的口袋名單 Pocket list of Foodie](https://zoeaeen13.github.io/API_Document/)
+- API 文件連結：[美食家的口袋名單 Pocket list of Foodie](https://zoeaeen13.github.io/Demo/week4/designAPI/)
 
 參考了作業提供的 API 樣式及自己使用上認為需要提供的資訊，紀錄設計的幾個重點：
 
