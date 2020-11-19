@@ -117,7 +117,7 @@ REST，全名 Representational State Transfer（具象狀態傳輸）是一種�
 * 4xx = User error（客戶端錯誤）
 * 5xx = Server error（伺服器端錯誤）
 
-狀態碼表明一個 HTTP 要求是否已經被完成，代表 **API 層的執行狀態**，回應分為五種：資訊回應、成功回應、重定向、用戶端錯誤及伺服器端錯誤。
+狀態碼表明一個 HTTP 要求是否已經被完成，代表 **API 層的執行狀態**，回應分為五種資訊回應：成功回應、重定向、用戶端錯誤及伺服器端錯誤。
 
 以下記錄其他常見狀況，另參考[這篇](https://tw.twincl.com/programming/*641y)：
 * `201 Created` 資源新增成功，在寫作業時有特別印出來 status code，新增書籍成功是會回傳 201
