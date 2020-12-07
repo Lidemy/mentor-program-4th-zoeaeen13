@@ -66,7 +66,7 @@ lbl.addEventListener('click', function (e) {
 ```javascript=
 func(p1, p2) 
 obj.child.method(p1, p2)
-func.call(context, p1, p2) // 先不談 apply
+func.call(context, p1, p2) // 先不談 apply，兩者滿相似的
 ```
 所以其實可以看成
 ```javascript=
@@ -76,6 +76,7 @@ func.call(undefined, p1, p2)
 obj.child.method(p1, p2)
 obj.child.method.call(obj.child, p1, p2)
 ```
+
 ##### this，就是函式前面的 context
 JS 開始執行一個函數，它的運行環境從原來的 Global Code 變為 Function Code，會創建一個 execution context 對象，this 就是你呼叫一個函式時傳的 context。
 

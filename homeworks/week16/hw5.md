@@ -689,7 +689,17 @@ class BlackDog extends Dog {
 ---
 ### this
 #### 1. 物件導向
-在物件導向裡面，如果是屬於某物件 (object) 的方法，this 設定成即將對應到的原型，也就是物件本身。
+在物件導向裡面，如果是屬於某物件（object）的方法/屬性，this 是它即將對應到的原型，也就是用 this 來指物件本身。
+```javascript=
+class Car {
+  setName(name) {
+    this.name = name
+  }
+}
+  
+const myCar = new Car()
+myCar.setName('hello')
+```
 
 #### 2. 非物件導向
 在談 scope chain 時有提過，程式碼運行前的 Runtime（記憶體堆疊、默認執行環境、執行環境堆疊）會被建立，默認執行環境也就是全域執行環境 Global Execution Context，它裡面存放著環境中會需要用到的各種資源。
@@ -707,11 +717,17 @@ globalEC = {
 ```
 而其中，就有這麼一個「this」存在，如果在全域使用到 this 就會找到一個全域 this 變數，根據環境的不同而改變預設值，在 node.js 指的是一個叫 global 變數，而在瀏覽器會指向一個 window 物件，除非開啟嚴格模式 `'use strict'`，那就就會是 undefined。
 
-而一般的 function（非構造函數），this 也會是預設值，它本身和 function 並沒有關聯。
+而一般的 function（非構造函數），this 也會是預設值，它和 function 本身並沒有關聯。
 
 #### 3. DOM 的 this
-如果是透過瀏覽器 DOM 提供的 API 來對節點做存取或操作，它對應的 this 就會試瀏覽器點擊事件的主體，實際操作的東西。
+如果是透過瀏覽器 DOM 提供的 APIs，例如 addEventListener() 來對節點做存取或操作，它對應的 this 就會是瀏覽器點擊事件的主體，是觸發事件的元素。
+```javascript=
+var lbl = document.querySelector('.lbl');
 
+lbl.addEventListener('click', function (e) {
+  console.log(this.tagName);      // "label"
+}, false);
+```
 
 ### 💡 改變 this：call、apply 和 bind 方法
 apply、bind、call，是 `Function.prototype` 中的三個函式，他們可以動態改變函數的 this
@@ -735,10 +751,8 @@ newFunction() // bar
 比較少使用到的是，bind 還可以綁定傳入函式的參數，bind() 接受的第一位參數為指定的 this，其餘參數則依序傳給被綁定的函式，作為固定的參數，最後會回傳一個新的函式。
 
 
-
 #### 兩種呼叫 function 的方法：call 與 apply
 它們的第一個參數同樣是**改變 this 的值**，兩者用途幾乎一樣，僅接受的參數類型不同，apply 接續傳入的參數會用陣列。
-
 
 用 call() 傳入什麼，就會改到 this，用它來做建構子要做的事情
 ```javascript=
@@ -757,13 +771,34 @@ test.call(123, 1, 2, 3)
 test.apply(123, [1, 2, 3])
 ```
 
+### 呼叫的方式
+一般認為呼叫 JS 函數有以下幾種形式，不過實際上前兩種只是透過一些方式轉換成第三種，第三種才是正常的調用方法
+```javascript=
+func(p1, p2) 
+obj.child.method(p1, p2)
+func.call(context, p1, p2) // 先不談 apply，兩者就差不多
+```
+所以其實可以看成
+```javascript=
+func(p1, p2)
+===> func.call(undefined, p1, p2)
+
+obj.child.method(p1, p2)
+===> obj.child.method.call(obj.child, p1, p2)
+```
+
+##### this，就是函式前面的 context
+JS 開始執行一個函數，它的運行環境從原來的 Global Code 變為 Function Code，會創建一個 execution context 對象，this 就是你呼叫一個函式時傳的 context。
+
+第一種調用方式，一旦看成 `func.call()` 就知道它沒有傳任何 context 進來，理所當然是 unfined，不過如果 this 是 null 或 undefined 就會去全域默認的 this 變數。
+
+而用 apply()、call()、bing() 等方法傳的第一個參數，是可以動態改變 this 的值。
 
 ### 💡 特例！箭頭函數 Arrow functions
 在物件使用回調時，可以拿到正確的 this
 
 * 傳統函式：this 依呼叫的方法而定
 * 箭頭函式：this 是依據綁定到其定義時所在的物件
-
 
 多數時候一般函數差不多，最大的差別在於「它的 this 完全根據程式碼定義的位置」，也就是說在 arrow 裡面的 this 永遠都是語意上的 this ，不管是誰呼叫他，或是被如何 bind、call、apply，他永遠都是拿到原先作用域的 this 。
 
