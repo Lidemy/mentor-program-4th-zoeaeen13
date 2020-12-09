@@ -61,9 +61,9 @@ setTimeout() 不存在於 JavaScript 原始碼內，它屬於瀏覽器提供的 
 ##### 17. 回調
 上面那些 `console.log('i: ' + i)` 其實在程式運行之初就跑完了，剩下的就是等待。
 
-那些被瀏覽器移到其他執行緒的 setTimeout()，是交由瀏覽器提供的執行緒計時，每次計時完裡頭的 callback function `console.log(i)` 就會按 0、1、2、3、4 秒被移到 Callback Queue（回調序列），等待 Event Loop 的安排。
+那些被瀏覽器移到其他執行緒的 setTimeout()，是交由瀏覽器提供的執行緒計時，每次計時完裡頭的 callback function `() => { console.log(i) }` 就會按 0、1、2、3、4 秒被移到 Callback Queue（回調序列），等待 Event Loop 的安排。
 
-Event Loop 一發現堆疊清空了，也就是 i 變成 5 迴圈執行完畢，就會將第一個 `console.log(i)` 移到 stack 中執行，因為 i 是全域變數，每一次的賦值其實都是改到同一個變數，所以印出的 i 都是 5。
+Event Loop 一發現堆疊清空了，也就是 i 變成 5 迴圈執行完畢，就會將第一個 `() => { console.log(i) }` 移到 stack 中執行，呼叫 `console.log(i)`，因為 i 原本就是全域變數，之前每一次的賦值其實都是改到同一個變數，所以印出的 i 都是 5。
 
 執行結果為
 ```javascript=
@@ -72,6 +72,7 @@ i: 1
 i: 2
 i: 3
 i: 4
+
 5
 // 1s
 5
