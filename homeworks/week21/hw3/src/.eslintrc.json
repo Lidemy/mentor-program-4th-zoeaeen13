@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "prettier",
+    "prettier/react",
+    "react-app"
+  ],
+  "rules": {
+    "react/prop-types": "warn"
+  }
+}
